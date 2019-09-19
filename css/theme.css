@@ -1,0 +1,64 @@
+.zyj-content {
+    /*增加背景网格*/
+    background-image: linear-gradient(90deg, rgba(250, 255, 255, 0.05) 3%, rgba(250, 255, 255, 0) 3%), linear-gradient(360deg,rgba(250, 255, 255, 0.05) 3%, rgba(255, 255, 255, 0) 3%);
+    background-size: 20px 20px;
+    background-position: center center;
+}
+
+.zyj-content h1 {
+    color: #64ffda;
+    font-weight: bold;
+}
+
+.zyj-content h2::before {
+    position: relative;
+    top: 0px;
+    left: -0.2em;
+    color: #64ffda;
+    content: "#";
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.zyj-content mark:hover {
+    background-color: #2bbc8a!important;
+    color: #1d1f21!important;
+}
+
+.zyj-content mark {
+    color: #ffffff!important;
+    background: transparent!important;
+    border-bottom: 3px solid #2bbc8a!important;
+    box-shadow: inset 0 -4px 0 #2bbc8a;
+}
+
+.zyj-content img {
+    border-radius: 6px;
+}
+
+.output_wrapper pre {
+    background: transparent!important;
+    border-color: transparent!important;
+}
+
+pre span {
+    line-height: 1.75em!important;
+}
+
+.output_wrapper {
+    max-width: 850px;
+}
+
+pre, img {
+    margin-bottom: 10px!important;
+    margin-top: 10px!important;
+}
+
+.mdui-card img {
+    border-radius: 0%;
+    margin: 0!important;
+}
+
+.mdui-card {
+    margin-bottom: 15px;
+}
