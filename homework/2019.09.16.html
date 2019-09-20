@@ -8,7 +8,7 @@
     <meta name="renderer" content="webkit"/>
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link rel="icon" type="image/png" href="../img/logo.png" sizes="192x192">
-    <title>[Homework] - 2019.09.16 - 张颖捷</title>
+    <title></title>
     <link rel="stylesheet" href="../css/mdui.min.css"/>
     <link rel="stylesheet" href="../css/docs.css"/>
     <link rel="stylesheet" href="../css/theme.css"/>
@@ -68,10 +68,24 @@
 <div class="mdui-container doc-container doc-no-cover">
     <div class="mdui-typo">
         <div class="zyj-content">
-            <h1>Homework for 2019.09.16</h1>
+
+            <h1 class="mdui-center">Homework for <span id="title"></span></h1>
+
             <blockquote>
-                <p>今天是2019年09月16日，本篇博文主要为完成今日的培训作业。有关今天学习的内容，请查看<a href="../note/2019.09.16.html">这里</a>。</p>
+                <p>今天是<span id="description"></span>，本篇博文主要为完成今日的培训作业。有关今天学习的内容，请查看<a id="here" href="">这里</a>。</p>
             </blockquote>
+
+            <div id="main">
+                <br/>
+                <br/>
+                如果您看到了这行字，则证明
+                <mark>您是通过file:///协议打开的网页，而笔记和作业页面均不支持此协议。</mark>
+                <br/>您可以访问我已经部署好的服务器：<a
+                    href="http://www.vidorra.cn/" target="_blank">点击这里</a><br/>
+                您也可以直接访问源文件：<a id="post" href="" target="_blank">点击这里</a>
+                <div id="Article" hidden></div>
+            </div>
+
 
         </div>
     </div>
@@ -79,31 +93,37 @@
 <div class="doc-footer-nav mdui-color-theme">
     <div class="mdui-container">
         <div class="mdui-row">
-            <a href="../homework/2019.09.12.html"
+            <a id="prev_link" href=""
                class="mdui-ripple mdui-color-theme mdui-col-xs-2 mdui-col-sm-6 doc-footer-nav-left">
                 <div class="doc-footer-nav-text">
                     <i class="mdui-icon material-icons">arrow_back</i>
                     <span class="doc-footer-nav-direction mdui-hidden-xs-down">Previous</span>
-                    <div class="doc-footer-nav-chapter mdui-hidden-xs-down">
-                        2019.09.12
-                    </div>
+                    <div id="prev" class="doc-footer-nav-chapter"></div>
                 </div>
             </a>
-            <a href="../homework/2019.09.17.html"
+            <a id="next_link" href=""
                class="mdui-ripple mdui-color-theme mdui-col-xs-10 mdui-col-sm-6 doc-footer-nav-right">
                 <div class="doc-footer-nav-text">
                     <i class="mdui-icon material-icons">arrow_forward</i>
                     <span class="doc-footer-nav-direction">Next</span>
-                    <div class="doc-footer-nav-chapter">
-                        2019.09.17
-                    </div>
+                    <div id="next" class="doc-footer-nav-chapter"></div>
                 </div>
             </a>
         </div>
     </div>
 </div>
+<script>
+    var DATE_PREV = "2019.09.12";
+    var DATE_NOW = "2019.09.16";
+    var DATE_NEXT = "2019.09.17";
+    var MD = "Java%20Day07";
+</script>
+<script src="../js/jquery-3.1.1.min.js"></script>
+<script src="../js/homework.js"></script>
 <script src="../js/smooth-scroll.min.js"></script>
 <script src="../js/mdui.min.js?v=0.4.3"></script>
+<script src="../js/showdown.min.js"></script>
+<script src="../js/markdown.js"></script>
 </body>
 
 </html>

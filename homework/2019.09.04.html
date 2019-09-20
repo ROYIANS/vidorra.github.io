@@ -8,7 +8,7 @@
     <meta name="renderer" content="webkit"/>
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link rel="icon" type="image/png" href="../img/logo.png" sizes="192x192">
-    <title>[Homework] - 2019.09.04 - 张颖捷</title>
+    <title></title>
     <link rel="stylesheet" href="../css/mdui.min.css"/>
     <link rel="stylesheet" href="../css/docs.css"/>
     <link rel="stylesheet" href="../css/theme.css"/>
@@ -68,161 +68,62 @@
 <div class="mdui-container doc-container doc-no-cover">
     <div class="mdui-typo">
         <div class="zyj-content">
-            <h1>Homework for 2019.09.04</h1>
+
+            <h1 class="mdui-center">Homework for <span id="title"></span></h1>
+
             <blockquote>
-                <p>今天是2019年09月04日，本篇博文主要为完成今日的培训作业。有关今天学习的内容，请查看<a href="../note/2019.09.04.html">这里</a>。</p>
+                <p>今天是<span id="description"></span>，本篇博文主要为完成今日的培训作业。有关今天学习的内容，请查看<a id="here" href="">这里</a>。</p>
             </blockquote>
 
-            <h2><a id="_4"></a>元字符</h2>
-            <p><strong>Q：显示家目录中所有以.txt结尾的文件：</strong></p>
-            <p>  <strong>A：</strong></p>
-            <div class="output_wrapper mdui-center" id="output_wrapper_id"
-                 style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif; background-image: linear-gradient(90deg, rgba(250, 255, 255, 0.05) 3%, rgba(250, 255, 255, 0) 3%), linear-gradient(360deg, rgba(250, 255, 255, 0.05) 3%, rgba(255, 255, 255, 0) 3%); background-size: 20px 20px; background-position: center center;">
-                <pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code
-                        class="bash language-bash hljs"
-                        style="overflow-wrap: break-word; margin: 0px 2px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; border-radius: 0px; overflow-x: auto; padding: 0.5em; background: rgb(30, 30, 30); color: rgb(220, 220, 220); white-space: pre !important; word-wrap: normal !important; word-break: normal !important; overflow: auto !important; display: -webkit-box !important;"><span
-                        class="linenum hljs-number"
-                        style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(184, 215, 163); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">1</span>$&nbsp;ls&nbsp;-al&nbsp;*.txt<br></code></pre>
+            <div id="main">
+                <br/>
+                <br/>
+                如果您看到了这行字，则证明
+                <mark>您是通过file:///协议打开的网页，而笔记和作业页面均不支持此协议。</mark>
+                <br/>您可以访问我已经部署好的服务器：<a
+                    href="http://www.vidorra.cn/" target="_blank">点击这里</a><br/>
+                您也可以直接访问源文件：<a id="post" href="" target="_blank">点击这里</a>
+                <div id="Article" hidden></div>
             </div>
-            <p><strong>Q：新建文件link1.txt、link2.txt、k.txt、ab.txt，执行ls *[link]* 和 ls *link*分别会有哪些文件被查出：</strong></p>
-            <p>  <strong>A：</strong></p>
-            <div class="output_wrapper mdui-center" id="output_wrapper_id"
-                 style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif; background-image: linear-gradient(90deg, rgba(250, 255, 255, 0.05) 3%, rgba(250, 255, 255, 0) 3%), linear-gradient(360deg, rgba(250, 255, 255, 0.05) 3%, rgba(255, 255, 255, 0) 3%); background-size: 20px 20px; background-position: center center;">
-                <pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code
-                        class="bash language-bash hljs"
-                        style="overflow-wrap: break-word; margin: 0px 2px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; border-radius: 0px; overflow-x: auto; padding: 0.5em; background: rgb(30, 30, 30); color: rgb(220, 220, 220); white-space: pre !important; word-wrap: normal !important; word-break: normal !important; overflow: auto !important; display: -webkit-box !important;"><span
-                        class="linenum hljs-number"
-                        style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(184, 215, 163); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">1</span>$&nbsp;touch&nbsp;link1.txt&nbsp;link2.txt&nbsp;k.txt&nbsp;ab.txt<br><span
-                        class="linenum hljs-number"
-                        style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(184, 215, 163); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">2</span><br><span
-                        class="linenum hljs-number"
-                        style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(184, 215, 163); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">3</span>$&nbsp;ls&nbsp;*[link]*&nbsp;-&gt;&nbsp;link1.txt&nbsp;link2.txt&nbsp;k.txt<br><span
-                        class="linenum hljs-number"
-                        style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(184, 215, 163); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">4</span>$&nbsp;ls&nbsp;*link*&nbsp;-&gt;&nbsp;link1.txt&nbsp;link2.txt<br></code></pre>
-            </div>
-            <p><strong>Q：查看2008年8月份的日历:</strong></p>
-            <p>  <strong>A：</strong></p>
-            <div class="output_wrapper mdui-center" id="output_wrapper_id"
-                 style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif; background-image: linear-gradient(90deg, rgba(250, 255, 255, 0.05) 3%, rgba(250, 255, 255, 0) 3%), linear-gradient(360deg, rgba(250, 255, 255, 0.05) 3%, rgba(255, 255, 255, 0) 3%); background-size: 20px 20px; background-position: center center;">
-                <pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code
-                        class="bash language-bash hljs"
-                        style="overflow-wrap: break-word; margin: 0px 2px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; border-radius: 0px; overflow-x: auto; padding: 0.5em; background: rgb(30, 30, 30); color: rgb(220, 220, 220); white-space: pre !important; word-wrap: normal !important; word-break: normal !important; overflow: auto !important; display: -webkit-box !important;"><span
-                        class="linenum hljs-number"
-                        style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(184, 215, 163); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">1</span>$&nbsp;cal&nbsp;8&nbsp;2008<br></code></pre>
-            </div>
-            <p><strong>Q：将当前时间输出到time.txt:</strong></p>
-            <p>  <strong>A：</strong></p>
-            <div class="output_wrapper mdui-center" id="output_wrapper_id"
-                 style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif; background-image: linear-gradient(90deg, rgba(250, 255, 255, 0.05) 3%, rgba(250, 255, 255, 0) 3%), linear-gradient(360deg, rgba(250, 255, 255, 0.05) 3%, rgba(255, 255, 255, 0) 3%); background-size: 20px 20px; background-position: center center;">
-                <pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code
-                        class="bash language-bash hljs"
-                        style="overflow-wrap: break-word; margin: 0px 2px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; border-radius: 0px; overflow-x: auto; padding: 0.5em; background: rgb(30, 30, 30); color: rgb(220, 220, 220); white-space: pre !important; word-wrap: normal !important; word-break: normal !important; overflow: auto !important; display: -webkit-box !important;"><span
-                        class="linenum hljs-number"
-                        style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(184, 215, 163); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">1</span>$&nbsp;date&nbsp;&gt;&nbsp;time.txt<br></code></pre>
-            </div>
-            <p><strong>Q：在Unix中<code>?</code>的作用:</strong></p>
-            <p>  <strong>A：</strong></p>
-            <p>  匹配一个字符（表示单个字符）</p>
-            <p><strong>Q：<code>;</code>和<code>|</code>的异同:</strong></p>
-            <p>  <strong>A：</strong></p>
-            <p>  分号和管道符都是连接命令，可以连接多个命令，但是分号的各个命令之间没有关系，管道符前一个命令的输出要作为后一个命令的输入。</p>
-            <p><strong>Q：查看文件<code>/etc/passwd</code>的内容，并将这些内容追加到上述文件的末尾</strong></p>
-            <p>  <strong>A：</strong></p>
-            <div class="output_wrapper mdui-center" id="output_wrapper_id"
-                 style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif; background-image: linear-gradient(90deg, rgba(250, 255, 255, 0.05) 3%, rgba(250, 255, 255, 0) 3%), linear-gradient(360deg, rgba(250, 255, 255, 0.05) 3%, rgba(255, 255, 255, 0) 3%); background-size: 20px 20px; background-position: center center;">
-                <pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code
-                        class="bash language-bash hljs"
-                        style="overflow-wrap: break-word; margin: 0px 2px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; border-radius: 0px; overflow-x: auto; padding: 0.5em; background: rgb(30, 30, 30); color: rgb(220, 220, 220); white-space: pre !important; word-wrap: normal !important; word-break: normal !important; overflow: auto !important; display: -webkit-box !important;"><span
-                        class="linenum hljs-number"
-                        style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(184, 215, 163); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">1</span>$&nbsp;cat&nbsp;/etc/passwd&nbsp;&gt;&gt;&nbsp;time.txt<br></code></pre>
-            </div>
-            <h2><a id="_62"></a>文本操作</h2>
-            <p><strong>Q：新建c.txt具有a.txt、b.txt的内容：</strong></p>
-            <p>  <strong>A：</strong></p>
-            <div class="output_wrapper mdui-center" id="output_wrapper_id"
-                 style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif; background-image: linear-gradient(90deg, rgba(250, 255, 255, 0.05) 3%, rgba(250, 255, 255, 0) 3%), linear-gradient(360deg, rgba(250, 255, 255, 0.05) 3%, rgba(255, 255, 255, 0) 3%); background-size: 20px 20px; background-position: center center;">
-                <pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code
-                        class="bash language-bash hljs"
-                        style="overflow-wrap: break-word; margin: 0px 2px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; border-radius: 0px; overflow-x: auto; padding: 0.5em; background: rgb(30, 30, 30); color: rgb(220, 220, 220); white-space: pre !important; word-wrap: normal !important; word-break: normal !important; overflow: auto !important; display: -webkit-box !important;"><span
-                        class="linenum hljs-number"
-                        style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(184, 215, 163); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">1</span>$&nbsp;cat&nbsp;a.txt&nbsp;b.txt&nbsp;&gt;&gt;&nbsp;c.txt<br></code></pre>
-            </div>
-            <p><strong>Q：清空c.txt文件的内容 :</strong></p>
-            <p>  <strong>A：</strong></p>
-            <div class="output_wrapper mdui-center" id="output_wrapper_id"
-                 style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif; background-image: linear-gradient(90deg, rgba(250, 255, 255, 0.05) 3%, rgba(250, 255, 255, 0) 3%), linear-gradient(360deg, rgba(250, 255, 255, 0.05) 3%, rgba(255, 255, 255, 0) 3%); background-size: 20px 20px; background-position: center center;">
-                <pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code
-                        class="bash language-bash hljs"
-                        style="overflow-wrap: break-word; margin: 0px 2px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; border-radius: 0px; overflow-x: auto; padding: 0.5em; background: rgb(30, 30, 30); color: rgb(220, 220, 220); white-space: pre !important; word-wrap: normal !important; word-break: normal !important; overflow: auto !important; display: -webkit-box !important;"><span
-                        class="linenum hljs-number"
-                        style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(184, 215, 163); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">1</span>$&nbsp;cat&nbsp;/dev/null&nbsp;&gt;&nbsp;c.txt<br></code></pre>
-            </div>
-            <p><strong>Q：cat和more的异同:</strong></p>
-            <p>  <strong>A：</strong></p>
-            <p>  同：都可以读取文件内容<br/>   异：cat直接显示全部内容，more可以分屏显示。</p>
-            <p><strong>Q：将2008年的日历输出到<code>a.txt</code>；将<code>a.txt</code>内容显示在屏幕上，并同时显示行号:</strong></p>
-            <p>  <strong>A：</strong></p>
-            <div class="output_wrapper mdui-center" id="output_wrapper_id"
-                 style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif; background-image: linear-gradient(90deg, rgba(250, 255, 255, 0.05) 3%, rgba(250, 255, 255, 0) 3%), linear-gradient(360deg, rgba(250, 255, 255, 0.05) 3%, rgba(255, 255, 255, 0) 3%); background-size: 20px 20px; background-position: center center;">
-                <pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code
-                        class="bash language-bash hljs"
-                        style="overflow-wrap: break-word; margin: 0px 2px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; border-radius: 0px; overflow-x: auto; padding: 0.5em; background: rgb(30, 30, 30); color: rgb(220, 220, 220); white-space: pre !important; word-wrap: normal !important; word-break: normal !important; overflow: auto !important; display: -webkit-box !important;"><span
-                        class="linenum hljs-number"
-                        style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(184, 215, 163); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">1</span>$&nbsp;cal&nbsp;2008&nbsp;&gt;&nbsp;a.txt<br><span
-                        class="linenum hljs-number"
-                        style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(184, 215, 163); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">2</span>$&nbsp;cat&nbsp;-n&nbsp;a.txt<br></code></pre>
-            </div>
-            <p><strong>Q：将<code>a.txt</code>、<code>b.txt</code>的内容合并，输出到<code>c.txt</code>中:</strong></p>
-            <p>  <strong>A：</strong></p>
-            <div class="output_wrapper mdui-center" id="output_wrapper_id"
-                 style="font-size: 16px; color: rgb(62, 62, 62); line-height: 1.6; word-spacing: 0px; letter-spacing: 0px; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif; background-image: linear-gradient(90deg, rgba(250, 255, 255, 0.05) 3%, rgba(250, 255, 255, 0) 3%), linear-gradient(360deg, rgba(250, 255, 255, 0.05) 3%, rgba(255, 255, 255, 0) 3%); background-size: 20px 20px; background-position: center center;">
-                <pre style="font-size: inherit; color: inherit; line-height: inherit; margin: 0px; padding: 0px;"><code
-                        class="bash language-bash hljs"
-                        style="overflow-wrap: break-word; margin: 0px 2px; line-height: 18px; font-size: 14px; font-weight: normal; word-spacing: 0px; letter-spacing: 0px; font-family: Consolas, Inconsolata, Courier, monospace; border-radius: 0px; overflow-x: auto; padding: 0.5em; background: rgb(30, 30, 30); color: rgb(220, 220, 220); white-space: pre !important; word-wrap: normal !important; word-break: normal !important; overflow: auto !important; display: -webkit-box !important;"><span
-                        class="linenum hljs-number"
-                        style="font-size: inherit; line-height: inherit; margin: 0px; padding: 0px; color: rgb(184, 215, 163); padding-right: 20px; word-spacing: 0px; word-wrap: inherit !important; word-break: inherit !important;">1</span>$&nbsp;cat&nbsp;a.txt&nbsp;b.txt&nbsp;&gt;&gt;&nbsp;c.txt<br></code></pre>
-            </div>
-            <h2><a id="vi_104"></a>vi编辑器</h2>
-            <p><strong>Q：vi有哪三种模式及如何进行相互切换:</strong></p>
-            <p>  <strong>A：</strong></p>
-            <p><img class="mdui-center mdui-hoverable mdui-img-fluid mdui-shadow-3"
-                    src="https://i.loli.net/2019/09/14/MlNIHRgrOedAumf.png" alt="img"/></p>
-            <p>  vi有命令行模式、文本输入模式和末行模式三种模式，切换方法：<br/>
-                  如果要从命令模式转换到编辑模式，可以输入命令<code>a</code>、<code>o</code>或者<code>i</code>。<br/>
-                  如果需要从文本模式返回，则按下<kbd>Esc</kbd>键即可。<br/>   在命令模式下输入<code>:</code>即可切换到末行模式，然后输入命令。</p>
-            <h1><a id="Note_117"></a>Note</h1>
-            <p>  请查看笔记文件夹。</p>
+
+
         </div>
     </div>
 </div>
 <div class="doc-footer-nav mdui-color-theme">
     <div class="mdui-container">
         <div class="mdui-row">
-            <a href="../homework/2019.09.03.html"
+            <a id="prev_link" href=""
                class="mdui-ripple mdui-color-theme mdui-col-xs-2 mdui-col-sm-6 doc-footer-nav-left">
                 <div class="doc-footer-nav-text">
                     <i class="mdui-icon material-icons">arrow_back</i>
                     <span class="doc-footer-nav-direction mdui-hidden-xs-down">Previous</span>
-                    <div class="doc-footer-nav-chapter mdui-hidden-xs-down">
-                        2019.09.03
-                    </div>
+                    <div id="prev" class="doc-footer-nav-chapter"></div>
                 </div>
             </a>
-            <a href="../homework/2019.09.05.html"
+            <a id="next_link" href=""
                class="mdui-ripple mdui-color-theme mdui-col-xs-10 mdui-col-sm-6 doc-footer-nav-right">
                 <div class="doc-footer-nav-text">
                     <i class="mdui-icon material-icons">arrow_forward</i>
                     <span class="doc-footer-nav-direction">Next</span>
-                    <div class="doc-footer-nav-chapter">
-                        2019.09.05
-                    </div>
+                    <div id="next" class="doc-footer-nav-chapter"></div>
                 </div>
             </a>
         </div>
     </div>
 </div>
+<script>
+    var DATE_PREV = "2019.09.03";
+    var DATE_NOW = "2019.09.04";
+    var DATE_NEXT = "2019.09.05";
+    var MD = "Linux%20Day02";
+</script>
+<script src="../js/jquery-3.1.1.min.js"></script>
+<script src="../js/homework.js"></script>
 <script src="../js/smooth-scroll.min.js"></script>
 <script src="../js/mdui.min.js?v=0.4.3"></script>
+<script src="../js/showdown.min.js"></script>
+<script src="../js/markdown.js"></script>
 </body>
 
 </html>

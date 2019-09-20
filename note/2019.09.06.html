@@ -8,7 +8,7 @@
     <meta name="renderer" content="webkit"/>
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
     <link rel="icon" type="image/png" href="../img/logo.png" sizes="192x192">
-    <title>[Note] - 2019.09.06 - 张颖捷</title>
+    <title></title>
     <link rel="stylesheet" href="../css/mdui.min.css"/>
     <link rel="stylesheet" href="../css/docs.css"/>
     <link rel="stylesheet" href="../css/theme.css"/>
@@ -68,43 +68,43 @@
 <div class="mdui-container doc-container doc-no-cover">
     <div class="mdui-typo">
         <div class="zyj-content">
-            <h1>2019.09.06 笔记
-                <a href="../pdf.js/web/viewer.html?file=../../pdf/2019.09.06.pdf">
+            <h1><span id="title"></span> 笔记
+                <a id="link" href="#">
                     <button
                             class="mdui-btn mdui-btn-icon"
-                            mdui-tooltip="{content: '全屏'}"><i
-                            class="mdui-icon material-icons">fullscreen</i></button>
+                            mdui-tooltip="{content: '单独页面浏览'}"><i
+                            class="mdui-icon material-icons">open_in_new</i></button>
+                </a>
+                <a href="javascript:change();">
+                    <button
+                            class="mdui-btn mdui-btn-icon"
+                            mdui-tooltip="{content: '切换pdf展现形式'}"><i
+                            class="mdui-icon material-icons">autorenew</i></button>
                 </a>
             </h1>
 
             <br/><br/><br/>
-            <div class="mdui-video-container">
-                <embed src="../pdf.js/web/viewer.html?file=../../pdf/2019.09.06.pdf" width="100%" height="100%">
-            </div>
+            <div class="mdui-video-container" id="pdf-place"></div>
         </div>
     </div>
 </div>
 <div class="doc-footer-nav mdui-color-theme">
     <div class="mdui-container">
         <div class="mdui-row">
-            <a href="../note/2019.09.05.html"
+            <a id="prev_link" href=""
                class="mdui-ripple mdui-color-theme mdui-col-xs-2 mdui-col-sm-6 doc-footer-nav-left">
                 <div class="doc-footer-nav-text">
                     <i class="mdui-icon material-icons">arrow_back</i>
                     <span class="doc-footer-nav-direction mdui-hidden-xs-down">Previous</span>
-                    <div class="doc-footer-nav-chapter mdui-hidden-xs-down">
-                        2019.09.05
-                    </div>
+                    <div id="prev" class="doc-footer-nav-chapter mdui-hidden-xs-down"></div>
                 </div>
             </a>
-            <a href="../note/2019.09.09.html"
+            <a id="next_link" href=""
                class="mdui-ripple mdui-color-theme mdui-col-xs-10 mdui-col-sm-6 doc-footer-nav-right">
                 <div class="doc-footer-nav-text">
                     <i class="mdui-icon material-icons">arrow_forward</i>
                     <span class="doc-footer-nav-direction">Next</span>
-                    <div class="doc-footer-nav-chapter">
-                        2019.09.09
-                    </div>
+                    <div id="next" class="doc-footer-nav-chapter"></div>
                 </div>
             </a>
         </div>
@@ -112,6 +112,13 @@
 </div>
 <script src="../js/smooth-scroll.min.js"></script>
 <script src="../js/mdui.min.js?v=0.4.3"></script>
+<script src="../js/jquery-3.1.1.min.js"></script>
+<script>
+    var DATE_PREV = "2019.09.05";
+    var DATE_NOW = "2019.09.06";
+    var DATE_NEXT = "2019.09.09";
+</script>
+<script src="../js/note.js"></script>
 </body>
 
 </html>
