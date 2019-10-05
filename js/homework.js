@@ -1,7 +1,7 @@
 var link1 = "../note/" + DATE_NOW + ".html";
 var link2 = "../homework/" + DATE_PREV + ".html";
 var link3 = "../homework/" + DATE_NEXT + ".html";
-var link4 = "../_posts/" + MD + ".html";
+var link4 = "../posts/" + MD + ".md";
 
 
 document.title = "[Homework] - " + DATE_NOW + " - 张颖捷";
