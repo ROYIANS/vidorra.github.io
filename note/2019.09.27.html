@@ -39,7 +39,7 @@
                 <a href="../index.html" class="mdui-list-item mdui-ripple ">说明</a>
             </div>
         </div>
-        <div class="mdui-collapse-item mdui-collapse-item-open">
+        <div class="mdui-collapse-item">
             <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
                 <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange">book</i>
                 <div class="mdui-list-item-content">
@@ -51,7 +51,7 @@
                 <a href="../homework/index.html" class="mdui-list-item mdui-ripple">索引</a>
             </div>
         </div>
-        <div class="mdui-collapse-item">
+        <div class="mdui-collapse-item mdui-collapse-item-open">
             <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
                 <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-cyan">picture_as_pdf</i>
                 <div class="mdui-list-item-content">
@@ -68,25 +68,23 @@
 <div class="mdui-container doc-container doc-no-cover">
     <div class="mdui-typo">
         <div class="zyj-content">
+            <h1><span id="title"></span> 笔记
+                <a id="link" href="#" target="_blank">
+                    <button
+                            class="mdui-btn mdui-btn-icon"
+                            mdui-tooltip="{content: '单独页面浏览'}"><i
+                            class="mdui-icon material-icons">open_in_new</i></button>
+                </a>
+                <a href="javascript:change();">
+                    <button
+                            class="mdui-btn mdui-btn-icon"
+                            mdui-tooltip="{content: '切换pdf展现形式'}"><i
+                            class="mdui-icon material-icons">autorenew</i></button>
+                </a>
+            </h1>
 
-            <h1 class="mdui-center">Homework for <span id="title"></span></h1>
-
-            <blockquote>
-                <p>今天是<span id="description"></span>，本篇博文主要为完成今日的培训作业。有关今天学习的内容，请查看<a id="here" href="">这里</a>。</p>
-            </blockquote>
-
-            <div id="main">
-                <br/>
-                <br/>
-                如果您看到了这行字，则证明
-                <mark>您是通过file:///协议打开的网页，而笔记和作业页面均不支持此协议。</mark>
-                <br/>您可以访问我上传到Github上的文件：<a
-                    href="https://github.com/ROYIANS/vidorra.github.io/tree/master/_posts" target="_blank">点击这里</a><br/>
-                您也可以直接访问源文件：<a id="post" href="" target="_blank">点击这里</a>
-                <div id="Article" hidden></div>
-            </div>
-
-
+            <br/><br/><br/>
+            <div class="mdui-video-container" id="pdf-place"></div>
         </div>
     </div>
 </div>
@@ -98,7 +96,7 @@
                 <div class="doc-footer-nav-text">
                     <i class="mdui-icon material-icons">arrow_back</i>
                     <span class="doc-footer-nav-direction mdui-hidden-xs-down">Previous</span>
-                    <div id="prev" class="doc-footer-nav-chapter"></div>
+                    <div id="prev" class="doc-footer-nav-chapter mdui-hidden-xs-down"></div>
                 </div>
             </a>
             <a id="next_link" href=""
@@ -112,18 +110,15 @@
         </div>
     </div>
 </div>
-<script>
-    const DATE_PREV = "2019.09.12";
-    const DATE_NOW = "2019.09.16";
-    const DATE_NEXT = "2019.09.17";
-    const MD = "Java%20Day07";
-</script>
-<script src="../js/jquery-3.1.1.min.js"></script>
-<script src="../js/homework.js"></script>
 <script src="../js/smooth-scroll.min.js"></script>
 <script src="../js/mdui.min.js?v=0.4.3"></script>
-<script src="../js/showdown.min.js"></script>
-<script src="../js/markdown.js"></script>
+<script src="../js/jquery-3.1.1.min.js"></script>
+<script>
+    const DATE_PREV = "2019.09.26";
+    const DATE_NOW = "2019.09.27";
+    const DATE_NEXT = "2019.09.29";
+</script>
+<script src="../js/note.js"></script>
 </body>
 
 </html>
