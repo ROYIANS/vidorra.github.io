@@ -396,39 +396,39 @@
                 - concat
 
                 ```java
-                String wechat = "Hollis";
-                String introduce = "每日更新Java相关技术文章";
-                String hollis = wechat.concat(",").concat(introduce);
+                String wechat = "ROYIANS";
+                String introduce = "你好呀";
+                String ROYIANS = wechat.concat(",").concat(introduce);
                 ```
 
                 - StringBuffer
 
                 ```java
-                StringBuffer wechat = new StringBuffer("Hollis");
-                String introduce = "每日更新Java相关技术文章";
-                StringBuffer hollis = wechat.append(",").append(introduce);
+                StringBuffer wechat = new StringBuffer("ROYIANS");
+                String introduce = "你好呀";
+                StringBuffer ROYIANS = wechat.append(",").append(introduce);
                 ```
 
                 - StringBuilder
 
                 ```java
-                StringBuilder wechat = new StringBuilder("Hollis");
-                String introduce = "每日更新Java相关技术文章";
-                StringBuilder hollis = wechat.append(",").append(introduce);
+                StringBuilder wechat = new StringBuilder("ROYIANS");
+                String introduce = "你好呀";
+                StringBuilder ROYIANS = wechat.append(",").append(introduce);
                 ```
 
                 - StringUtils.join
 
                 ```java
-                String wechat = "Hollis";
-                String introduce = "每日更新Java相关技术文章";
+                String wechat = "ROYIANS";
+                String introduce = "你好呀";
                 System.out.println(StringUtils.join(wechat, ",", introduce));
                 String[] strs = {"str1", "str2"};
                 System.out.println(StringUtils.join(Arrays.asList(strs),","));
                 ```
 
-            - [String.valueOf和Integer.toString的区别](https://github.com/hollischuang/toBeTopJavaer/blob/master/basics/java-basic/value-of-vs-to-string.md)
-            - [switch对String的支持](https://github.com/hollischuang/toBeTopJavaer/blob/master/basics/java-basic/switch-string.md)
+            - [String.valueOf和Integer.toString的区别](https://github.com/ROYIANSchuang/toBeTopJavaer/blob/master/basics/java-basic/value-of-vs-to-string.md)
+            - [switch对String的支持](https://github.com/ROYIANSchuang/toBeTopJavaer/blob/master/basics/java-basic/switch-string.md)
             - 字符串池
             - 常量池
                 - 运行时常量池
@@ -475,200 +475,425 @@
     - 指标识符可以被访问、引用的范围
     - 作用域内不一定可见，但可见一定在作用域内。
 31. 任意进制到十进制的转换
-32. 赋值操作符
+32. 原码补码反码
+    1. 正数的反码与其原码相同；负数的反码是对其原码逐位取反，但符号位除外。
+    2. 正数的补码与其原码相同；负数的补码是在其反码的末位加1。
+33. 赋值操作符
     - int a = 10;
     - 数据类型要匹配
     - 左边只能是变量
     - 复合赋值运算符会将右值的类型隐式转换为左边的类型，可能会造成数据损失
-33. [instanceof](https://www.cnblogs.com/ysocean/p/8486500.html)
+34. [instanceof](https://www.cnblogs.com/ysocean/p/8486500.html)
     - 判断对象是否是某一类类型
     - 不能操作基本数据类型
     - java.lang.Object是所有类的父类
-34. ==
-35. 移位运算
-36. 位运算符
-    1. &
-    2. |
-    3. ^
-37. 逻辑运算符
-    1. &&
-    2. &
-38. & 和 && 的区别
-39. 三目运算符 ？ ：
-40. ++、--
-41. Java类型转换
-    1. 隐式类型转换
-    2. 显式类型转换
-42. 顺序结构
-43. 条件语句
+35. ==
+    1. 如果是基本数据类型，==判断的是值
+    2. 如果是对象类型，==判断的是对象的地址
+36. 移位运算
+    1. 左移运算符用“<<”表示，是将运算符左边的对象，向左移动运算符右边指定的位数，并且在低位补零；其实向左移n 位，就相当于乘上2的n次方。
+    2. 右移运算符用符号“>>>”表示，逻辑右移，是将运算符左边的对象向右移动运算符右边指定的位数，并且在高位补0；其实右移n位，就相当于除上2的n次方。
+    3. 带符号的右移运算符用符号“>>”表示，算数右移，是将运算符左边的运算对象，向右移动运算符右边指定的位数。如果是正数，在高位补零，如果是负数，则在高位补1
+37. 位运算符
+    1. & 与0相&，将某位清零
+    2. | 与1相|，将某位置一
+    3. ^ 与1相^，将某位反转
+38. 逻辑运算符
+    1. && 逻辑运算符，具有逻辑短路功能（连接的两个条件，如果第一个条件为假，后面的条件不进行运算）
+    2. & 位运算符，但可以连接多个条件，但没有短路功能
+39. [& 和 && 的区别](https://www.jianshu.com/p/7fe355536cc4)
+40. 三目运算符 ？ ：
+41. ++、--
+    - ![img](https://i.bmp.ovh/imgs/2019/10/d396932c52a8faec.png)
+42. Java类型转换
+    1. 隐式类型转换，即自动类型转换，由系统自动完成的类型转换。从存储范围小的类型到存储范围大的类型。byte→short(char)→int→long→float→double。不仅如此，当把任何基本类型的值和字符串值进行连接运算时，基本类型的值将自动类型转换成字符串类型，虽然字符串类型不是基本类型，而是引用类型，因此，如果希望把基本类型的值转换为对应的字符串时，可以把基本类型的值和一个空字符串进行连接。
+    2. 显式类型转换，即强制类型转换，就是缩小转换。
+43. 顺序结构
+44. 条件语句
     1. if
     2. if...else...
     3. if...else if...else...
-44. 分支语句 switch
-45. 循环语句
+45. 分支语句 switch
+    - 表达式的数据类型，可以是byte、short、int、char、enum、String
+46. 循环语句
     1. for
     2. while
     3. do...while...
     4. for、while区别
-46. break、continue
-47. 死循环
+47. break、continue
+    - break[label]：终止switch或者循环
+    - continue[label]：结束本次循环，继续下一次的循环
+    - Java中的标签是为循环设计的，是为了在多重循环中方便地使用break和continue跳到标签处
+48. 死循环
     1. for(;;){...}
     2. while(true){...}
     3. do{...}while(true)
-48. 什么是数组
-49. 如何声明数组
-50. 如何创建数组
-51. 如何访问数组
-52. 数组长度
-53. 数组遍历
-54. 数组常见异常
+49. 什么是数组
+    - Java中的数组是对象，有长度和数组成员
+50. 如何声明数组
+    - 数据类型[] 数组名
+    - 数据类型 数组名[]
+51. 如何创建数组
+    - 数据类型[] 数组名 = new 数据类型[长度]
+    - 数据类型[] 数组名 = new 数据类型[]{元素1, 元素2, ...}
+    - 数据类型[] 数组名 = {元素1, 元素2, ...}
+    - 可以存放基本数据类型，也可以存放类类型
+    - 数组分配好堆内存后，会对成员进行默认初始化（数值类型为0，boolean类型为false，引用类型为null
+52. 如何访问数组
+    - 数组名[索引]
+    - 数组名[索引] = 数值 为数组中的元素赋值
+    - 变量 = 数组名[索引] 获取数组中的元素
+    - 数组动态初始化： new分配内存，[]访问数组成员赋值，声明、赋值可以分开写
+    - 数组的静态初始化：{}直接分配内存、赋值，声明、赋值不能分开写
+53. 数组长度
+    - 数组有长度，是固定的，Java赋予数组一个属性，可以获取到数组的长度，即 数组名.length
+    - 数组下标访问时，可以使用变量
+    - 数组访问时，编译器不会检查下标范围，需要自己负责
+54. 数组遍历
+    - fori
+    - foreach
+55. 数组常见异常
     1. ArrayIndexOutOfBoundsException
+        - 数组下标越界
     2. NullPointerException
-55. 数组作为参数
-56. 数组作为返回值
-57. 如何拷贝一个数组
-58. 多维数组的练习
-59. 什么叫可变参数
-60. 面向对象编程思想
-61. 面向对象编程步骤
+        - 空指针异常
+56. 数组作为参数
+    - 传递的参数是数组内存地址
+57. 数组作为返回值
+    - 返回的是数组的内存地址
+58. 如何拷贝一个数组
+    - System.arraycopy(...)
+
+    ```java
+    package cn.royians.review;
+
+    import java.util.Arrays;
+
+    public class ShuZuTest {
+        public static void main(String[] args) {
+            int[] intarr1 = {1,2,3,4,5,6};
+            int[] intarr2 = new int[intarr1.length];
+            System.arraycopy(intarr1,0,intarr2,0,intarr1.length);
+            System.out.println(Arrays.toString(intarr1));
+            System.out.println(Arrays.toString(intarr2));
+        }
+    }
+    ```
+
+59. 多维数组的练习
+    - 其实没有多维数组，所谓的二维数组，就是一个一维数组，然后里面的元素是一维数组。
+60. 什么叫可变参数
+    - 底层用数组实现，一个参数列表中只能出现一个可变参数，并在所有参数的最后声明
+    - someMethod(String... strings){...}
+61. 面向对象编程思想
+    - 强调的是通过调用对象的行为来实现功能，而不是自己一步一步的去操作实现
+    - 面向过程强调的是步骤，面向对象强调的是对象
+    - 面向对象思想是一种更符合我们思考习惯的思想，它可以将复杂的事情简单化，并将我们从中兴这变成了指挥者
+    - 面向对象的三大特性：封装、继承、多态
+62. 面向对象编程步骤
     1. 定义类
+
+        ```java
+        public class 类名 {
+            //成员变量
+            //成员方法
+        }
+        ```
+
     2. 创建对象
+
+        ```java
+        类名 对象名 = new 类名();
+        ```
+
     3. 访问成员
-62. 什么是方法
-63. 为甚要有方法
-64. 方法的格式
-65. 方法格式的说明
-66. 方法的注意事项
-67. 什么叫封装
-68. 什么叫递归
-69. 封装有什么好处
-70. 封装有哪些原则
-71. private关键字
-72. this
-73. 方法重载
-74. 什么叫初始化对象
-75. 如何创建初始化对象
-76. 什么是构造器方法
-77. 什么是继承
-78. 继承有什么好处
-79. 继承有什么弊端
-80. 什么时候用继承
-81. 继承的特点
-82. 继承中成员变量与成员方法的关系
-83. 方法重写
-84. 方法重载与方法重写的关系
-85. 继承中构造方法的关系
-86. this和super的区别
-87. 什么叫多态
-88. 多态存在的三个必要条件
-89. 多态有哪些好处和弊端
-90. 什么是static
-91. static关键字的特点
-92. static的注意事项
-93. 静态变量和成员变量的区别
-94. 什么叫代码块
-95. 代码块分类
-96. 常见代码块的应用
-97. 何谓静态导入
-98. 什么是final
-99.  final关键字修饰类、方法以及变量的特点
-100. final关键字修饰局部变量
-101. final修饰成员变量的初始化时机
-102. 什么是abstract
-103. 什么是interface
-104. 类、接口继承关系
-105. 访问控制
-106. 什么叫内部类
-107. 成员内部类
-108. 静态内部类
-109. 局部内部类
-110. 内部类的作用
-111. 什么叫自动装箱
-112. 什么叫自动拆箱
-113. ==比较和equals()方法
-114. toString()方法
-115. String、StringBuffer、StringBuilder区别
-116. java.lang.Object
-117. clone()
-118. finalize()
-119. final、finalize、finally区别
-120. java.lang.String
-121. 正则表达式
-122. java.util.Date
-123. java.util.SimpleDateFormat
-124. java.util.Calendar
-125. System
-126. 什么叫集合
-127. 集合与数组的区别
-128. Java集合框架
-129. 集合的操作
-130. 迭代器
-131. 什么是List
-132. List的特点
-133. List常用方法
-134. ArrayList
-135. LinkedList
-136. ArrayList、LinkedList、Vector的特点
-137. 什么是Set
-138. Set的特点
-139. HashSet
-140. HashTable
-141. 红黑树
-142. LinkedHashSet
-143. 什么是TreeSet
-144. TreeSet自然顺序
-145. TreeSet比较器顺序
-146. 以上两种方式的区别
-147. 什么是Map
-148. Map的特点
-149. Map和Collection的不同
-150. Map常用方法
-151. HashMap
-152. LinkedHashMap
-153. HashMap和HashTable的区别
-154. TreeMap
-155. java.util.Properties
-156. java.util.Stack
-157. java.util.Collections
-158. Collention和Collections的区别
-159. 增强for循环
-160. 什么叫泛型
-161. 泛型的好处
-162. 如何使用泛型
-163. 什么叫通配符
-164. 自定义泛型类
-165. 什么叫裸类型
-166. 类型擦除
-167. enum
-168. 反射的概念
-169. 反射的使用场景
-170. 反射编程步骤
-171. 类加载器（了解）
-172. 什么叫异常
-173. 有哪些常见的异常类型
-174. 异常如何处理
-175. try...catch...finally
-176. throws
-177. java.lang.Exception
+
+        ```java
+        对象名.成员变量;
+        对象名.成员方法();
+        ```
+
+63. 什么是方法
+    - 完成特定功能的代码块
+64. 为甚要有方法
+    - 提高代码复用性
+65. 方法的格式
+
+    ```java
+    修饰符 返回值类型 方法名(参数类型 参数名1, 参数类型 参数名2...) {
+        方法体语句;
+        return 返回值;
+    }
+    ```
+
+66. 方法格式的说明
+    - 修饰符 public static protected private final
+    - 返回值类型 就是功能结果的数据类型
+    - 方法名 符合命名规则即可，方便我们的调用
+    - 参数：
+        - 实际参数：就是方法调用时的，实际参与运算的
+        - 形式参数：就是方法定义上的，用于接收实际参数的
+    - 参数类型：就是参数的数据类型
+    - 参数名：就是变量名
+    - 方法体语句：就是完成功能的代码
+    - return：结束方法的，可以携带返回值也可以不携带
+    - 返回值：就是功能的结果，由return带给调用者
+67. 方法的注意事项
+    - 方法不调用不执行
+    - 方法与方法是平级关系，不能嵌套定义
+    - 方法定义的时候参数之间用逗号隔开
+    - 方法调用的时候不用再传递数据类型
+    - 如果方法有明确的返回值，一定要有一个return带回一个值。
+68. 什么叫封装
+    - 封装是指隐藏对象的属性和实现细节，仅对外提供公共访问方式
+69. 什么叫递归
+    - 方法自己调用自己
+    - 好处是不知道循环次数的时候可以用
+    - 弊端是不能调用的次数太多，可能导致栈溢出
+70. 封装有什么好处
+    - 隐藏对象的属性和实现细节，仅对外提供公共访问方式
+    - 提高了代码的复用性
+    - 提高了安全性
+71. 封装有哪些原则
+    - 把属性隐藏，提供公共方法对其访问
+    - 将不需要对外提供的内容都隐藏起来
+72. private关键字 封装的操作
+    - private关键字的特点：
+        - 是一个权限修饰符
+        - 可以修饰成员变量和成员方法
+        - 被其修饰的成员只能在本类中被访问
+        - private仅仅是封装一种体现形式，不能说封装就是私有
+73. this
+    - 代表所在类的当前对象的引用（地址值）
+    - this.成员变量名
+    - this.成员方法名
+74. 方法重载
+    - 在同一类中
+    - 相同的方法名
+    - 参数列表有所不同（参数类型、参数数量、参数顺序）
+    - 不关心返回值类型
+75. 什么叫初始化对象
+76. 如何创建初始化对象
+    - 在栈中分配空间，存放引用变量
+    - 在堆中分配空间，存储对象；对象属性进行默认初始化
+    - 引用变量指向堆地址
+    - 使用成员变量值进行属性赋值
+    - 调用构造器方法
+77. 什么是构造器方法
+    - 是一种特殊的方法，构建类对象时被调用
+    - 和类同名
+    - 没有返回值类型
+    - 可以通过this(...)调用本类其他构造器，必须是构造器第一条语句
+    - 如果没有提供构造器，系统会提供一个默认构造器（无参、空体）；如果提供了构造器，系统将不会提供默认构造器；建议自己在类中都添加一个无参构造器。
+78. 什么是继承 extend
+    - 多个类中存在相同的行为和属性时候。
+    - 将这些内容抽取到单独一个类中，那么多个类无需再定义这些属性和行为，只要继承那一个类即可。
+    - 其中，多个类可以称为子类
+    - 单独的那一个类称为父类、超类或者基类
+79. 继承有什么好处
+    - 提高了代码的复用性
+    - 提高了代码的维护性
+    - 让类与类之间产生了关系，是多态的前提
+80. 继承有什么弊端
+    - 类的耦合性增强了
+    - 开发的原则：高内聚、低耦合
+    - 耦合：类和类的关系
+    - 内聚：就是自己完成某件事情的能力
+81. 什么时候用继承
+    - 继承体现的是一种关系：“is-a”
+82. 继承的特点
+    - Java只支持单继承，不支持多继承
+    - Java支持多层继承
+83. [继承中成员变量与成员方法的关系](https://www.cnblogs.com/fuck1/p/5437777.html)
+    - 继承中成员变量的关系
+        - 子类的成员变量名称和父类中的成员变量名称不一样，这个太简单写那个名字就访问那个名字！
+        - 子类的成员变量名称和父类中的成员变量名称一样，这个怎么访问呢?
+            - 子类的方法访问变量的查找顺序：
+                - 在子类方法的局部范围找，有就使用。
+                - 在子类的成员范围找，有就使用。
+                - 在父类的成员范围找，有就使用。
+                - 找不到，就报错。
+    - 继承中构造方法的关系
+        - 子类的构造方法默认会去访问父类的无参构造方法，因为子类会继承父类中的数据，可能还会使用父类的数据。所以，子类初始化之前，一定要先完成父类数据的初始化。
+        - 子类通过super去明确调用带参构造，通过明确的调用指定的父类带参构造，为父类数据进行初始化。
+        - 子类通过this调用本身的其他构造，但是一定会有一个去访问了父类的构造，this();
+    - 继承中成员方法的关系
+        - 子类的成员方法和父类中的成员方法名称不一样，这个太简单
+        - 子类的成员方法和父类中的成员方法名称一样，这个怎么访问呢?
+            - 通过子类对象访问一个方法的查找顺序：
+                - 在子类中找，有就使用
+                - 在父类中找，有就使用
+                - 找不到，就报错。
+84. 方法重写
+    - 什么是方法重写，子类父类里出现了一模一样的方法
+        - 父类子类之间
+        - 相同的方法名、参数列表、返回值类型
+        - 可见性不能被缩小
+        - 异常不能被扩大
+    - 什么时候用
+        - 当子类需要父类的功能，而子类又有自己特定的内容时，可以重写父类中的方法。
+        - 这样，既沿袭了父类的功能，又定义了子类特有的内容
+    - 注意
+        - 父类的私有方法不能被重写，子类根本无法继承啊
+        - 子类重写父类方法时候，权限不能更低，最好一致
+        - 父类静态方法，子类必须也通过静态方法进行重写，（其实算不上重写，静态只能覆盖静态）
+        - 子类重写父类方法时候，最好声明一模一样
+85. [方法重载与方法重写的关系](https://github.com/hollischuang/toBeTopJavaer/blob/master/basics/java-basic/overloading-vs-overriding.md)
+    - ![img](https://i.loli.net/2019/10/11/ehmHD29TB8C1wVo.png)
+86. 继承中构造方法的关系
+    - 构造方法不能被继承
+    - 子类中所有的构造方法默认都会调用父类中无参数的构造方法
+    - 因为子类会继承父类中的数据，可能还会使用父类的数据
+    - 所以子类初始化之前，一定要先完成父类数据的初始化
+    - 子类构造方法的第一条语句默认是super();
+    - java.lang.Object类 最顶层的父类
+    - 父类没有无参构造方法，子类怎么办？
+        - 子类构造器中必须通过super(...)解决
+        - super(...)或者this(...)必须是构造方法的第一句
+87. this和super的区别
+    - 调用成员变量
+        - this.成员变量：调用本类的成员方法，也可以调用父类的成员变量
+        - super.还曾元变量：调用父类的成员变量
+    - 调用成员方法
+        - this.成员方法：调用本类的成员方法，也可以调用父类的成员方法
+        - super.成员方法：调用父类的成员方法
+    - 调用构造方法
+        - this(...)：调用本类的构造方法
+        - super(...)：调用父类的构造方法
+88. 什么叫多态
+    - 同一类域的不同对象在调用同一方法的时候表现不同
+    - 同一类域的含义：是指继承同意父类或实现同一接口的类的集合
+    - 代码
+        - 父类类型 变量名 = new 子类对象
+        - 变量名.方法名();
+        - 当多态方式调用方法时，首先检查父类中是否有该方法，如果没有，则编译报错，如果有，执行的是子类重写后的方法。
+    - 多态中的成员访问
+        - 成员变量：编译看左边（父类），运行看左边（父类），所有的成员变量取决于编译时类型
+        - 成员方法：编译看左边，运行看右边，所有成员方法取决于运行时的类型
+        - 静态方法：编译看左边，运行看左边，所有静态方法取决于编译时的类型。
+    - 类型转换
+        - 向上转型：多态本身是子类类型向上转换的过程，这个过程是默认的。`Animal a1 = new Cat();`
+        - 向下转型：父类类型向子类类型向下转换的过程，这个过程是强制的。`if (a1 instanceof Cat) { Cat c = (Cat) a1; }`
+        - 为什么要转型？当使用多态方式调用方法时，首先检查父类中是否有该方法，如果没有，则编译报错，就是说，不能调用子类拥有，而父类没有的方法。想要调用子类特有的方法，必须做向下转型。
+89. 多态存在的三个必要条件
+    - 要有继承
+    - 要有方法重写
+    - 父类引用指向子类对象
+90. 多态有哪些好处和弊端
+    - 提高了代码的维护性（继承来保证）
+    - 提高了代码的扩展性（多态来保证），父类当作形式参数，接受任意子类对象
+    - 弊端是不能直接使用子类的特有属性和行为
+91. 什么是static
+92. static关键字的特点
+    - 随着类的加载而加载
+    - 优先于对象存在
+    - 被类的所有对象共享
+    - 那么他就应该被定义为静态的
+93. static的注意事项
+94. 静态变量和成员变量的区别
+95. 什么叫代码块
+96. 代码块分类
+97. 常见代码块的应用
+98. 何谓静态导入
+99. 什么是final
+100. final关键字修饰类、方法以及变量的特点
+101. final关键字修饰局部变量
+102. final修饰成员变量的初始化时机
+103. 什么是abstract
+104. 什么是interface
+105. 类、接口继承关系
+106. 访问控制
+107. 什么叫内部类
+108. 成员内部类
+109. 静态内部类
+110. 局部内部类
+111. 内部类的作用
+112. 什么叫自动装箱
+113. 什么叫自动拆箱
+114. ==比较和equals()方法
+115. toString()方法
+116. String、StringBuffer、StringBuilder区别
+117. java.lang.Object
+118. clone()
+119. finalize()
+120. final、finalize、finally区别
+121. java.lang.String
+122. 正则表达式
+123. java.util.Date
+124. java.util.SimpleDateFormat
+125. java.util.Calendar
+126. System
+127. 什么叫集合
+128. 集合与数组的区别
+129. Java集合框架
+130. 集合的操作
+131. 迭代器
+132. 什么是List
+133. List的特点
+134. List常用方法
+135. ArrayList
+136. LinkedList
+137. ArrayList、LinkedList、Vector的特点
+138. 什么是Set
+139. Set的特点
+140. HashSet
+141. HashTable
+142. 红黑树
+143. LinkedHashSet
+144. 什么是TreeSet
+145. TreeSet自然顺序
+146. TreeSet比较器顺序
+147. 以上两种方式的区别
+148. 什么是Map
+149. Map的特点
+150. Map和Collection的不同
+151. Map常用方法
+152. HashMap
+153. LinkedHashMap
+154. HashMap和HashTable的区别
+155. TreeMap
+156. java.util.Properties
+157. java.util.Stack
+158. java.util.Collections
+159. Collention和Collections的区别
+160. 增强for循环
+161. 什么叫泛型
+162. 泛型的好处
+163. 如何使用泛型
+164. 什么叫通配符
+165. 自定义泛型类
+166. 什么叫裸类型
+167. 类型擦除
+168. enum
+169. 反射的概念
+170. 反射的使用场景
+171. 反射编程步骤
+172. 类加载器（了解）
+173. 什么叫异常
+174. 有哪些常见的异常类型
+175. 异常如何处理
+176. try...catch...finally
+177. throws
+178. java.lang.Exception
     1. getMessage()
     2. toString()
     3. printStackTrace()
-178. 异常使用需要注意哪些
-179. 异常的分类 ◀ [173.]
-180. 自定义异常
-181. throw与throws
-182. final、finally、finalize ◀ [119.]
-183. assert
-184. GUI省略
-185. 什么叫进程
-186. 什么叫线程
-187. 什么叫并发
-188. 什么叫并行
-189. 线程的三要素
+179. 异常使用需要注意哪些
+180. 异常的分类 ◀ [173.]
+181. 自定义异常
+182. throw与throws
+183. final、finally、finalize ◀ [119.]
+184. assert
+185. GUI省略
+186. 什么叫进程
+187. 什么叫线程
+188. 什么叫并发
+189. 什么叫并行
+190. 线程的三要素
     4. CPU
     5. 代码
     6. 数据
-190. Java中实现多线程的方法
+191. Java中实现多线程的方法
     7. 继承java.lang.Tread，重写run()方法
     8. 实现java.lang.Runnable，重写run()方法
     9. 两种方式的比较
@@ -676,52 +901,52 @@
         - 调用start()启动多线程
         - 多次启动一个线程是非法的
         - 多线程具有可论证的确定性，但是实际上具有不可确定性
-191. 多线程共享变量
-192. 线程方法
+192. 多线程共享变量
+193. 线程方法
     - getName()
     - sleep()
     - currentThread()
     - isAlive()
     - join()
     - setDaemon()
-193. 什么是同步代码块
-194. 同步代码块的语法
-195. 什么情况下需要同步
-196. 线程安全
-197. 线程之间的通信
+194. 什么是同步代码块
+195. 同步代码块的语法
+196. 什么情况下需要同步
+197. 线程安全
+198. 线程之间的通信
     - 什么时候需要通信
     - 怎么通信
-198. 线程状态转换
-199. 什么叫死锁
-200. 线程优先级
-201. 什么叫可重入锁
-202. 读写锁
-203. 线程组
-204. 线程池
-205. 定时任务调度
-206. volatile
-207. IO
-208. FileInputStream、FileOutputStream
-209. BufferedInputStream、BufferedOutputStream
-210. DataInputStream、DataOutputStream
-211. PipedInputStream、PipedOutputStream
-212. SequenceInputStream
-213. ByteArrayInputStream、ByteArrayOutputStream
-214. InputStreamReader、OutputStreamWriter
-215. BufferedReader、BufferedWriter
-216. FileReader、FileWriter
-217. File
-218. RandomAccessFile
-219. 对象持久化 ObjectInputStream、ObjectOutputStream
-220. 网络编程概念
-221. 基于TCP协议网络服务器端编程步骤
-222. URL、URLConnection：获取远程站点的信息
-223. 基于UDP协议网络服务器端编程步骤
-224. 协议
-225. IP
-226. TCP
-227. UDP
-228. HTTP
+199. 线程状态转换
+200. 什么叫死锁
+201. 线程优先级
+202. 什么叫可重入锁
+203. 读写锁
+204. 线程组
+205. 线程池
+206. 定时任务调度
+207. volatile
+208. IO
+209. FileInputStream、FileOutputStream
+210. BufferedInputStream、BufferedOutputStream
+211. DataInputStream、DataOutputStream
+212. PipedInputStream、PipedOutputStream
+213. SequenceInputStream
+214. ByteArrayInputStream、ByteArrayOutputStream
+215. InputStreamReader、OutputStreamWriter
+216. BufferedReader、BufferedWriter
+217. FileReader、FileWriter
+218. File
+219. RandomAccessFile
+220. 对象持久化 ObjectInputStream、ObjectOutputStream
+221. 网络编程概念
+222. 基于TCP协议网络服务器端编程步骤
+223. URL、URLConnection：获取远程站点的信息
+224. 基于UDP协议网络服务器端编程步骤
+225. 协议
+226. IP
+227. TCP
+228. UDP
+229. HTTP
 
 
 <style>
