@@ -790,164 +790,646 @@
     - 被类的所有对象共享
     - 那么他就应该被定义为静态的
 93. static的注意事项
+    - 在静态方法中不能使用this关键字
+    - 静态是随着类的加载而加载，this是睡着对象的创建而存在，静态比对象先存在
+    - 静态方法只能访问静态成员变量和静态成员方法
 94. 静态变量和成员变量的区别
+    - 所属不同
+        - 静态变量属于类，所以也称为类变量
+        - 成员变量属于对象，所以也称为实例变量
+    - 内存出现时间不同
+        - 静态变量随着类的加载而加载，随着类的消失而消失
+        - 成员变量随着对象的创建而存在，随着对象的消失而消失
+    - 调用不同
+        - 静态变量可以通过类名调用，也可以通过对象调用
+        - 成员变量只能通过对象名调用
 95. 什么叫代码块
+    - 在Java中，使用花括号括起来的代码被称为代码块
 96. 代码块分类
+    - 局部代码块
+    - 构造代码块
+    - 静态代码块
+    - 同步代码块
 97. 常见代码块的应用
+    - 局部代码块
+        - 在方法中出现：限定变量生命周期，及早释放，提高内存利用率
+    - 构造代码块（初始化块）
+        - 在类中方法外出现，多个构造方法中相同的代码存放到一起，每次调用构造方法都执行，并且在构造方法之前执行
+    - 静态代码块
+        - 在类中方法外出现，并加上static修饰，用于给类进行初始化，在加载的时候就执行，并且只执行一次。一般用于加载驱动。
 98. 何谓静态导入
+    - 将类中的静态属性、静态方法导入本类，直接访问，简化编程
 99. 什么是final
+    - final关键字修饰类方法以及变量
 100. final关键字修饰类、方法以及变量的特点
+    - 修饰类，类不能被继承
+    - 修饰方法，方法不能被重写
+    - 修饰变量，变量就成了常量，只能被复制一次，一般与public STATIC相同
 101. final关键字修饰局部变量
+    - 基本类型，是值不能被改变
+    - 引用类型，是地址值不能被改变，对象中的属性可以改变
 102. final修饰成员变量的初始化时机
+    - 显式初始化
+    - 在对象构造完毕之前即可（构造器中）
 103. 什么是abstract
+    - 抽象类：不具体的类，不能实例化，用来继承用的
+    - abstract修饰类、方法
+    - 抽象类不能实例化
+    - 抽象类中不一定有抽象方法，有抽象方法一定是抽象类
+    - 抽象类的子类要么是抽象的，要么实现父类中的所有抽象方法
+    - abstract不能修饰变量
+    - abstract不能与static、final、private同用
+    - 抽象类有构造器
 104. 什么是interface
+    - 接口：一种特殊的抽象类，用来定义规范，让子类实现
+    - interface进行定义
+    - 不能实例化
+    - 子类要实现接口中所有抽象方法
+    - 变量必须是常量 public static final
+    - 成员方法都是抽象的 public abstract
+    - 接口没有构造器
 105. 类、接口继承关系
+    - 类与类 extends 继承关系，只能单继承，可以多层继承
+    - 类与接口 implements实现关系，可以单实线，也可以多实现，可以继承一个类，同时实现多个接口
+    - 接口与接口：extends继承关系，可以单继承，也可以多继承。
+
 106. 访问控制
+    - ![img](https://i.loli.net/2019/10/11/2HCtedMJYZET431.png)
+    - 常见的修饰符
+    - ![img](https://i.loli.net/2019/10/11/DmO5MBd8bATGgk7.png)
 107. 什么叫内部类
+    - 内部类，就是在类里面定义的类
 108. 成员内部类
+    - 定义在类的里面，方法的外面
 109. 静态内部类
+    - 定义在类的里面，方法的外面，用static修饰，只能访问外围静态的资源
 110. 局部内部类
+    - 定义在方法的里面
+    - 局部内部类访问的局部变量必须是final的，jdk8中可以省略final关键字
+        - 局部内部类对象生命周期和局部变量不同，有可能局部方法结束以后（局部变量也销毁后），局部内部类对象还存在，为了防止这个情况的发生，局部内部类对象创建时会拷贝一份局部变量
+        - 由于是在局部内部类对象创建时拷贝局部变量，如何保持局部变量和拷贝数据一致性，需要使用final限定，拷贝后不变，保持一致性。
 111. 内部类的作用
+    - 解决命名冲突，范围比包更小
+    - 可以方便访问外围类成员
+    - 变相实现多重继承
 112. 什么叫自动装箱
+    - 基本数据类型转换为对应的数值包装类类型
 113. 什么叫自动拆箱
+    - 数值包装类类型转换为基本数据类型
 114. ==比较和equals()方法
+    - Object类的equals()方法
+        - 比较其他某个对象是否与此对象相等
+        - 由于比较对象的引用没有意义，一般建议重写该方法
+        - 如果没有重写Object类的equals方法，equals方法和==号比较引用类型无区别，重写后的equals方法比较的是对象中的属性
 115. toString()方法
+    - public String toString()：返回该对象的字符串表示
 116. String、StringBuffer、StringBuilder区别
+    - String是不可变字符串
+    - StringBuffer：可变字符串，多线程安全
+    - StringBuilder：可变字符串，多线程不安全，非多线程环境效率更高
 117. java.lang.Object
 118. clone()
+    - [浅克隆（浅拷贝）、深克隆（深拷贝）](https://blog.csdn.net/lovezhaohaimig/article/details/80372233)
+    - 实现Cloneable接口，重写Object中的clone()方法
+    - 浅克隆仅仅复制要克隆的对象，而不赋值她所引用的对象
+    - 深克隆要把克隆的对象及其所引用的对象都复制了一边
 119. finalize()
+    - finalize()是Object中的方法，当垃圾回收器将要回收对象所占内存之前被调用，即当一个对象被虚拟机宣告死亡时会先调用它finalize()方法，让此对象处理它生前的最后事情（这个对象可以趁这个时机挣脱死亡的命运）。
 120. final、finalize、finally区别
-121. java.lang.String
+    - 垃圾回收器准备好释放对象占用的存储空间，将首先调用其finalize()方法，并且在下一次垃圾回收动作发生时，才真正回收对象占用的内存
+    - 但是Java如果内存总是充足的，那么垃圾回收可能永远不会进行，也就是或finalize()可能永远不被执行，显然指望他做收尾工作是远远不够的
+    - Java程序又垃圾回收器，所以一般情况下内存问题不用程序员操心，但是有一种JNI(Java Native Interface)调用non-Java程序，比如C/C++，finalize()的工作就是回收这个部分的内存。
+    - [final、finalize、finally区别](https://www.cnblogs.com/ktao/p/8586966.html)
+        - final
+            - final关键字用来修饰类、方法和变量
+            - final修饰的类不能被继承
+            - final修饰的方法不能被重写
+            - final修饰的变量不能被更改
+        - finally
+            - 是try...catch...语句中的，异常处理的一部分。
+            - 起到的作用是经常用来用于释放资源。它控制的代码永远会执行，除非是前面碰到`System.exit()`之类的让JVM退出的情况。
+        - finalize
+            - 是Object类的一个方法，用于垃圾回收。
+121. java.lang.
+    - 常见方法
+        - public int length () ：返回此字符串的长度。
+        - public String concat (String str) ：将指定的字符串连接到该字符串的末尾。
+        - public char charAt (int index) ：返回指定索引处的 char值，下标从0开始。
+        - public int indexOf (String str) ：返回指定子字符串第一次出现在该字符串内的索引。
+        - public String substring (int beginIndex) ：返回一个子字符串，从beginIndex开始截取字符串到字符串结尾。
+        - public String substring (int beginIndex, int endIndex) ：返回一个子字符串，从beginIndex到endIndex截取字符串。含beginIndex，不含endIndex。
+        - public boolean contains(CharSequence s)：判断源字符串中是否包含s字符串
+        - public boolean startsWith(String prefix)：判断字符串是不是以某个字符串前缀开始
+        - public boolean endsWith(String suffix)：判断字符串是不是以某个字符串后缀结尾
+        - public char[] toCharArray () ：将此字符串转换为新的字符数组。
+        - public byte[] getBytes () ：使用平台的默认字符集将该 String编码转换为新的字节数组。
+        - public String replace (CharSequence target, CharSequence replacement) ：将与target匹配的字符串使用replacement字符串替换。
+        - public String[] split(String regex) ：将此字符串按照给定的regex（规则）拆分为字符串数组。
 122. 正则表达式
+    - 匹配正整数：”\\d+”
+    - 匹配正小数：”\\d+\\.\\d+”  
+    - 匹配负整数：”-\\d+”
+    - 匹配负小数：”-\\d+\\.\\d+”
+    - 匹配保留两位小数的正数：”\\d+\\.\\d{2}”
+    - 匹配保留1-3位小数的正数：”\\d+\\.\\d{1,3}”
+    - 匹配合法的邮箱：”[a-zA-Z_0-9]+@[a-zA-Z_0-9]+(\\.[a-zA-Z_0-9]+)+”
+    - 获取IP地址(192.168.1.100)中的每段数字：”\\.”
 123. java.util.Date
 124. java.util.SimpleDateFormat
 125. java.util.Calendar
 126. System
+    - public static long currentTimeMillis()：返回以毫秒为单位的当前时间，与1970年01月01日00:00点之间的毫秒差值。
 127. 什么叫集合
+    - 存储其他对象的对象
 128. 集合与数组的区别
+    - 数组长度是固定的，集合的长度是可变的
+    - 数组中存储的是同一类型的元素，可以先存储基本数据类型值，集合存储的都是对象，而且对象的类型可以不一致。
+    - 如果元素个数是固定的推荐用数组，不是固定的推荐用集合。
 129. Java集合框架
+    - JAVASE提供了满足各种需求的API，在使用这些API前，先了解其继承与接口操作架构，才能了解何时采用哪个类，以及类之间如何彼此合作，从而达到灵活应用。
+    - 集合按照其存储结构可以分为两大类，分别是单列集合java.util.Collection和双列集合java.util.Map
+    - ![img](https://i.loli.net/2019/10/11/INV7HgSUmiXk1e5.png)
+    - List:有序、可重复
+    - SortedSet：有序、补充都
+    - Set：无序、不重复
 130. 集合的操作
+    - Collection是所有单列集合的父接口，因此在Collection中定义了单列集合(List和Set)通用的一些方法，这些方法可用于操作所有的单列集合。方法如下：
+    - public boolean add(E e)：把给定的对象添加到当前集合中 。
+    - public void clear()：清空集合中所有的元素。
+    - public boolean remove(E e)：把给定的对象在当前集合中删除。
+    - public boolean contains(E e)：判断当前集合中是否包含给定的对象。
+    - public boolean isEmpty()：判断当前集合是否为空。
+    - public int size(): 返回集合中元素的个数。
+    - public Object[] toArray()：把集合中的元素，存储到数组中
 131. 迭代器
+    - Iterator接口的常用方法如下：
+    - public E next()：返回迭代的下一个元素。
+    - public boolean hasNext()：如果仍有元素可以迭代，则返回 true。
+    - 迭代器是对集合进行遍历，而每一个集合内部的存储结构都是不同的，所以每一个集合的存取都是不一样的，那么就需要在每一个类中定义hasNext()和next()方法,这样做是可以的,但是会让整个集合体系过于臃肿,迭代器是将这样的方法向上抽取出接口,然后在每个类的内部,定义自己迭代方式。
+    - 好处：第一规定了整个集合体系的遍历方式都是hasNext()和next()方法。第二,代码有底层内部实现,使用者不用管怎么实现的,会用即可。
+    - 原理：在调用Iterator的next方法之前，迭代器的索引位于第一个元素之前，不指向任何元素，当第一次调用迭代器的next方法后，迭代器的索引会向后移动一位，指向第一个元素并将该元素返回，当再次调用next方法时，迭代器的索引会指向第二个元素并将该元素返回，依此类推，直到hasNext方法返回false，表示到达了集合的末尾，终止对元素的遍历。
 132. 什么是List
 133. List的特点
+    - 它是一个元素存取有序的集合，即元素的存入顺序和取出顺序一致。
+    - 它是一个带有索引的集合，通过索引就可以精确的操作集合中的元素。
+    - 集合中可以有重复的元素，通过元素的equals方法，来比较是否为重复的元素。
 134. List常用方法
+    - 继承了Collection接口中的全部方法，而且还增加了一些根据元素索引来操作集合的特有方法
+    - public void add(int index, E element) : 将指定的元素，添加到该集合中的指定位置上。
+    - public E get(int index) :返回集合中指定位置的元素。
+    - public E remove(int index) : 移除列表中指定位置的元素, 返回的是被移除的元素。
+    - public E set(int index, E element) :用指定元素替换集合中指定位置的元素,返回值的更新前的元素。
 135. ArrayList
+    - ArrayList 集合数据存储的结构是数组结构。元素增删慢，查找快，由于日常开发中使用最多的功能为查询数据、遍历数据，所以 ArrayList 是最常用的集合。
+    - ArrayList中放自定义类对象
+    - 注意：
+        - 1）ArrayList.remove(int)按照下标删除，不会自动装箱
+        - 2）迭代器遍历的同时，添加元素，并发修改异常，通过ListIterator.add(...)解决
+        - java.util.ConcurrentModificationException
+        - 3）遍历集合删除元素，**使用Iterator.remove()操作**，不要直接使用List.remove()
+        - 4）集合数组互转Arrays.asList()/ArrayList.toArray()
 136. LinkedList
+    - LinkedList 集合数据存储的结构是双向链表结构。方便元素添加、删除的集合。
+    - public void addFirst(E e) :将指定元素插入此列表的开头。
+    - public void addLast(E e) :将指定元素添加到此列表的结尾。
+    - public E getFirst() :返回此列表的第一个元素。
+    - public E getLast() :返回此列表的最后一个元素。
+    - public E removeFirst() :移除并返回此列表的第一个元素。
+    - public E removeLast() :移除并返回此列表的最后一个元素。
 137. ArrayList、LinkedList、Vector的特点
+    - ArrayList底层数据结构是数组，查找快，增删慢。线程不安全，效率高
+    - LinkedList底层数据结构是（双向）链表，查询慢，增删快。线程安全，效率低
+    - Vector相对ArrayList查询慢，线程安全，相对LinkedList增删慢，数组结构。
 138. 什么是Set
 139. Set的特点
+    - 元素无序、不重复
 140. HashSet
+    - 我们使用Set集合都是需要去掉重复元素的，如果在存储的时候逐个equals()比较, 效率较低,哈希算法提高了去重复的效率, 降低了使用equals()方法的次数。
+    - 根据对象的Hash值来确定元素在集合中的存储位置，具有良好的存取和查找性能。保证元素唯一性的方式依赖于hashCode方法和equals方法。
+    - HashSet集合存储数据的结构（哈希表）：数组+链表+红黑树（JDK1.8增加了红黑树部分）
+    - ![img](https://i.loli.net/2019/10/11/F2YpP4ZWcCKI57l.png)
+    - ![img](https://i.loli.net/2019/10/11/nQKkva4XswEZY8o.png)
 141. HashTable
+    - 哈希表（HashTable）又叫做散列表，是根据关键码值（即键值对）而直接访问的数据结构。也就是说，它通过把关键码映射到表中一个位置来访问记录，以加快查找速度。这个映射函数就叫做散列（哈希）函数，存放记录的数组叫做散列表。
 142. 红黑树
+    - 是二叉树的一种，红黑树本身就是一颗二叉查找树，将节点插入后，该树仍然是一颗二叉查找树。也就意味着，树的键值仍然是有序的。
 143. LinkedHashSet
+    - 它是链表和哈希表组合的一个数据存储结构。元素的存入顺序和取出顺序一致。
 144. 什么是TreeSet
+    - 有序，不可重复。可以指定一个顺序，对象存入后会按照指定的顺序排列
 145. TreeSet自然顺序
+    - Comparable
+    - TreeSet类的add()方法中会把存入的对象提升为Comparable类型
+    - 调用对象的compareTo()方法和集合中的对象比较
+    - 根据compareTo()方法返回的结果进行存储
 146. TreeSet比较器顺序
+    - Comparator
+    - 创建TreeSet的时候可以指定一个Comparator
+    - 如果传入了Comparator的子类对象, 那么TreeSet就会按照比较器中的顺序排序
+    - add()方法内部会自动调用Comparator接口中compare()方法排序
+    - 调用的对象是compare方法的第一个参数,集合中的对象是compare方法的第二个参数
 147. 以上两种方式的区别
+    - TreeSet构造函数什么都不传, 默认按照类中Comparable的顺序(没有就报错ClassCastException)；TreeSet如果传入Comparator, 就优先按照Comparator
 148. 什么是Map
 149. Map的特点
+    - 将键映射到值的对象
+    - 一个映射不能包含重复的键
+    - 每个键最多只能映射到一个值
 150. Map和Collection的不同
+    - Map是双列的，Collection是单列的
+    - Map的键唯一，Collection的子体系Set是唯一的
+    - Map的数据结构只针对键有效，跟值无关；Collection的数据结构针对元素有效
 151. Map常用方法
+    - public V put(K key, V value) : 把指定的键与指定的值添加到Map集合中。
+    - public V remove(Object key) : 把指定的键所对应的键值对元素从Map集合中删除，返回被删除元素的值。
+    - public V get(Object key) 根据指定的键，在Map集合中获取对应的值。
+    - public Set<K> keySet() : 获取Map集合中所有的键，存储到Set集合中。
+    - public Set<Map.Entry<K,V>> entrySet() : 获取到Map集合中所有的键值对对象的集合(Set集合)。
 152. HashMap
+    - 存储数据采用的哈希表结构，元素的存取顺序不能保证一致。由于要保证键的唯一、不重复，需要重写键的hashCode()方法、equals()方法。
 153. LinkedHashMap
+    - HashMap下有个子类LinkedHashMap，存储数据采用哈希表结构+链表结构。通过链表结构可以保证元素的存取顺序一致；通过哈希表结构可以保证的键的唯一、不重复，需要重写键的hashCode()方法、equals()方法。
 154. HashMap和HashTable的区别
+    - Hashtable是JDK1.0版本出现的,是线程安全的,效率低;HashMap是JDK1.2版本出现的,是线程不安全的,效率高
+    - Hashtable不可以存储null键和null值;HashMap可以存储null键和null值
 155. TreeMap
+    - 可以根据键进行排序，排序规则的指定同TreeSet相同
 156. java.util.Properties
+    - 通过load()操作，从文件中加载键值对
 157. java.util.Stack
 158. java.util.Collections
+    - public static <T> boolean addAll(Collection<T> c, T... elements) :往集合中添加一些元素。
+    - public static void shuffle(List<?> list) :打乱集合顺序。
+    - public static <T> void sort(List<T> list) :将集合中元素按默认规则排序。
+    - public static <T> void sort(List<T> list，Comparator<? super T> ) :将集合中元素按指定规则排序。
 159. Collention和Collections的区别
+    - java.utils.Collections是集合工具类，用来对集合进行操作。
 160. 增强for循环
+    - foreach
 161. 什么叫泛型
+    - 参数化数据类型，将数据类型作为参数进行传递
 162. 泛型的好处
+    - 提高安全性，将运行期的ClassCastException转到编译器报错
+    - 避免了类型强转的麻烦
+    - 增加可读性
 163. 如何使用泛型
+    - 定义格式：修饰符 class 类名<代表泛型的变量> {  }
+    - 使用泛型： 即什么时候确定泛型，在创建对象的时候确定泛型
+    - `ArrayList<String> list = new ArrayList<String>();`
+    - 泛型不支持子类型，=号左右两边泛型类型保持一致
+    - JDK7以后，=号右边的泛型类型可以省略
 164. 什么叫通配符
+    - <?>通配符，表示泛型类型未知，可以传递任何数据类型
+    - <? extends 数据类型>限定通配符，可以传递“数据类型”及其子类型
+    - <? super 数据类型>限定通配符，可以传递“数据类型”及其父类型
 165. 自定义泛型类
+    - 在类定义中加入类型参数，一般用大写字母表示
+    - 类中类型用大写字母来代替
 166. 什么叫裸类型
+    - 泛型类型没有使用类型参数，类型不安全
 167. 类型擦除
+    - 编译以后的字节码文件中，所有泛型信息将被删除
 168. enum
+    - 和class、interface同级，用来定义枚举类型，取值在指定范围内
+    - 使用注意
+        - 可以定义在包、类中，但是不能定义在方法中
+        - 枚举类型不能被继承
+        - 枚举类型默认继承java.ang.Enum
+        - 枚举类型可以有属性、方法、构造器（不能用public）
+        - 枚举类型的每个取值都是自己的一个实例对象
+        - 枚举类型可以实现接口
+        - 枚举类型中有静态方法values()获取所有取值
+        - 枚举类型中可以有抽象方法，必须在每个取值中重写
+        - java.util.EnumSet集合辅助使用enum类型：allOf()/range()/of()...
+        - java.util.EnumMap集合辅助使用enum类型
 169. 反射的概念
+    - 镜像：类被加载到内存以后，通过类镜像来表，java.lang.Class
+    - 反射：在运行时，通过类镜像进行类操作（获取类信息、构建类对象、调用方法等）
+    - 使用java.lang.reflect包下的API（Field、Method、Constructor等）
 170. 反射的使用场景
+    - 当类的信息在编译时无法确定，运行时才能确定下来时，必须使用反射进行相关操作
 171. 反射编程步骤
+    - 获取类镜像：Class = java.lang.Class.forName(...)
+    - 如需要，创建类实例对象：Class-->newInstance()
+    - 调用反射相关API
+        - java.lang.reflect.Field
+        - java.lang.reflect.Constructor
+        - java.lang.reflect.Method
 172. 类加载器（了解）
+    - 负责将.class文件加载到内存中，并为之生成对应的Class对象。
+    - 类加载器的分类
+        - Bootstrap ClassLoader 根类加载器
+            - 也被称为引导类加载器，负责Java核心类的加载
+            - 比如System,String等。在JDK中JRE的lib目录下rt.jar文件中
+        - Extension ClassLoader 扩展类加载器
+            - 负责JRE的扩展目录中jar包的加载。
+            - 在JDK中JRE的lib目录下ext目录
+        - Sysetm ClassLoader 系统类加载器
+            - 负责在JVM启动时加载来自java命令的class文件，以及classpath环境变量所指定的jar包和类路径
 173. 什么叫异常
 174. 有哪些常见的异常类型
+    - 数组下标越界ArrayIndexOutOfBoundsException
+    - 空指针NullPointerException
+    - ClassCastException异常
+    - NumberFormatException异常
+    - RuntimeException
+    - IllegalArgumentException
+    - AWTException
+    - IOException
+    - FileNotFoundException
+    - EOFException
 175. 异常如何处理
+    - JVM的默认处理方式
+    - 把异常的名称、原因、位置等信息输出在控制台，同时会结束程序。
+    - 一旦有异常发生，其后来的代码不能继续执行。
+    - 解决程序中异常的手动方式
+    - 176.177
 176. try...catch...finally
+
+        ```java
+        try{
+        可能产生异常的代码
+        }catch(异常类型1){
+        异常处理程序1
+        }catch(异常类型2){
+        异常处理程序2
+        }finally{
+        不管是否发生异常，都要执行的代码
+        }
+
+        ```
+
 177. throws
-178. java.lang.Exception
-    1. getMessage()
-    2. toString()
-    3. printStackTrace()
+    - 抛出一个指定的异常对象
+    - throw new 异常类名(参数);
+    - Jvm→main()→a()→b()
+178. java.lang.Exception 异常类
+    1. getMessage() 返回该异常的详细信息字符串，即异常提示信息
+    2. toString() 返回该异常的名称与详细信息字符串
+    3. printStackTrace() 在控制台输出该异常的名称与详细信息字符串、异常出现的代码位置
 179. 异常使用需要注意哪些
+    - 捕获异常要先小后大（先子类后父类）
+    - 可以用catch(Exception e){}匹配默认异常处理分支，放在最后
+    - try...finally...没有catch是可以的
+    - 尽量不要在try语句中使用return
+    - finally中的代码总是会被执行（除非遇到System.exit()），经常用来释放资源
+    - 程序带着某个返回条件进行finally，如finally中修改了返回条件，以finally为准
+    - 子类重写方法抛出的异常是父类方法抛出异常的交集
 180. 异常的分类 ◀ [173.]
+    - ![img](https://i.loli.net/2019/10/11/dYx4r8XaBefRgUc.png)
+    - Error：应用程序无法处理
+    - 检查型异常：必须自己写代码进行处理
+    - Exception的子类，但不是RuntimeException及其子类
+    - try...catch...finally在本方法中进行处理
+    - throws抛给调用者进行处理
+    - 非检查型异常（运行时异常）：无需写代码进行处理
+    - 要么是RuntimeException，要么是其子类
 181. 自定义异常
+    - 继承java.lang.Exception，通过名字区别不同的异常，不需要重写任何方法；属于检查型异常
 182. throw与throws
+    - throws出现在方法声明头，而throw出现在方法体
+    - throws表示出现异常的一种可能性，并不一定会发生这些异常，throw则是抛出异常，执行throw则一定抛出了某种异常对象
+    - 两者都是消极的处理异常的方式，只是抛出或者可能抛出异常，但是不会由方法去处理异常，真正的处理异常由方法的上层调用者处理。
 183. final、finally、finalize ◀ [119.]
+    - final 修饰属性、方法和类，分别表示属性值不可变，方法不可重写，类不可继承。
+    - finally是异常处理语句结构的一部分，表示其中的代码总是执行。
+    - finalize是Object类的一个方法，在垃圾收集器执行的时候会调用被回收对象的此方法，可以覆盖此方法提供垃圾收集时的其他资源回收，例如关闭文件等。
 184. assert
+    - 断言，测试时使用，当满足判断条件，程序继续进行，否则报错退出。
+    - 需要通过java -ea开启断言功能
 185. GUI省略
+    - 容器 JFrame、JPanel
+    - 布局管理器 FlowLayout、GridLayout、CardLayout、BorderLayout
 186. 什么叫进程
+    - 进程，是指一个内存中运行的应用程序，每个进程都有一个独立的内存空间，是系统运行程序的基本单位，系统运行一个程序即是从一个进程中创建、运行到消亡的过程。
 187. 什么叫线程
+    - 线程是进程的一个执行单元，负责当前进程中程序的执行，一个进程中至少有一个线程。一个进程中是可以有多个线程的，这样的程序被称为多线程程序。简而言之：一个程序运行的以后至少有一个进程，一个进程中可以包含多个线程。
 188. 什么叫并发
+    - 并发是指两个或者多个事件在同一个时间段内发生
 189. 什么叫并行
+    - 并行是指两个或多个事件在同一时刻发生，同时发生。
 190. 线程的三要素
-    4. CPU
-    5. 代码
-    6. 数据
+    - CPU
+    - 代码
+    - 数据
+    - 多线程并发执行并不能提高程序的运行速度，但是可以提高程序的运行效率，可以同时完成多项工作，让CPU使用率更高。
+    - 宏观上并行，微观上串行
+    - JVM运行时是多线程的，智商启动了垃圾回收线程和主线程。
+    - 每个线程都有自己的线程栈，县城方法中的局部变量每个线程都有自己的副本
 191. Java中实现多线程的方法
-    7. 继承java.lang.Tread，重写run()方法
-    8. 实现java.lang.Runnable，重写run()方法
-    9. 两种方式的比较
-    10. 注意：
+    1. 继承java.lang.Tread，重写run()方法
+    2. 实现java.lang.Runnable，重写run()方法
+    3. 两种方式的比较
+        继承Thread类（建议）  
+            好处是可以直接使用Thread类中的方法，代码简单  
+            坏处是如果已经有了父类，就不能用这种方法，毕竟Java只有单继承  
+        实现Runnable接口  
+            好处是即使自己定义的线程类有了父类也没有关系，因为有了父类也可以实现接口，而且接口也是可以多实现的。  
+        坏处是不能直接使用Thread中的方法，需要先获取到线程对象，才能调用Thread的方法，代码复杂
+    4. 注意：
         - 调用start()启动多线程
         - 多次启动一个线程是非法的
         - 多线程具有可论证的确定性，但是实际上具有不可确定性
 192. 多线程共享变量
+    - 继承Thread，用static修饰的变量，在多个线程之间共享
+    - 实现Runnable，成员变量在多个线程之间共享
 193. 线程方法
-    - getName()
-    - sleep()
-    - currentThread()
-    - isAlive()
-    - join()
-    - setDaemon()
+    - getName() 获取线程名称
+    - sleep() 使得线程睡眠
+    - currentThread() 获取当前线程对象
+    - isAlive() 判断当前线程是否还活着
+    - join() 当前线程挂起，等待指定线程执行结束后，当前线程再继续
+    - setDaemon(boolean) 设置守护线程，其他线程都结束，守护线程随之结束
+    - 守护线程的优先级比较低，用于为系统中的其它线程提供服务。例如垃圾回收线程就是一个经典的守护线程，当我们的程序中不再有任何运行的Thread,程序就不会再产生垃圾，垃圾回收器也就无事可做，所以当垃圾回收线程是JVM上仅剩的线程时，垃圾回收线程会自动退出。它始终在低级别的状态中运行，用于实时监控和管理系统中的可回收资源。
 194. 什么是同步代码块
+        - 语法
+
+            ```java
+                synchronized(同步锁){
+                    需要同步操作的代码
+            }
+            ```
+
+        - 同步锁：对象的同步锁只是一个概念，可以想象为在对象上标记了一个锁
+        - 锁对象可以为任意类类型
+        - 多线程对象要使用同一把锁
+        - 注意：在任何时候，最多允许一个线程拥有同步锁，谁拿到锁就进入代码块，其他的线程只能在外等着。
 195. 同步代码块的语法
+        - ↑
 196. 什么情况下需要同步
+        - 当多线程并发, 有多段代码同时执行时, 我们希望某一段代码执行的过程中CPU不要切换到其他线程工作，这时就需要同步。
+        - 如果两段代码是同步的, 那么同一时间只能执行一段, 在一段代码没执行结束之前, 不会执行另外一段代码。
+        - 注意
+                - 使用synchronized关键字加上一个锁对象来定义一段代码, 就叫同步代码块。
+                - 多个同步代码块如果使用相同的锁对象, 那么他们就是同步的
+                - 使用synchronized关键字修饰一个方法, 该方法中所有的代码都是同步的
+                - 非静态同步方法的锁对象是:this
+                - 静态同步方法的锁对象是:字节码对象（类镜像Class对象）
 197. 线程安全
+        - 多线程并发操作同一数据时, 就有可能出现线程安全问题  
+        - 同步技术可以解决这种问题, 把操作数据的代码进行同步, 不要多个线程一起操作
+        - 锁的粒度：太细，并发性降低；太粗，数据可能不安全
+        - 一般将多线程操作的共享对象，作为锁对象
+        - 对共享数据进行操作的，可能引起数据不一致的代码，放到同步代码块中
+        - “临界区”:对共享资源进行操作的代码区域
 198. 线程之间的通信
-    - 什么时候需要通信
-    - 怎么通信
+        - 什么时候需要通信
+                - 多个线程并发执行时, 在默认情况下CPU是随机切换线程的
+                - 如果我们希望他们有规律地执行, 就可以使用线程通信
+        - 怎么通信
+                - 如果希望线程等待, 就调用java.lang.Object.wait()
+                - 如果希望唤醒等待的线程, 就调用java.lang.Object.notify();
+                - 这两个方法必须在同步代码中执行, 并且使用同步锁对象来调用（synchronized锁对象和调用wait()/notify()的对象必须相同）
+                - 如果就执行一次，确保wait()在notify()之前
 199. 线程状态转换
+        - ![img](https://i.loli.net/2019/10/11/CBbreL8GlUQF5t1.png)
+        - sleep方法和wait方法的区别?
+                - 这两个方法来自不同的类分别是Thread和Object
+                - sleep方法在同步方法或同步代码块中,不释放锁；wait方法在同步方法或者同步代码块中,释放锁
 200. 什么叫死锁
+        - 两个或两个以上的线程在执行过程中，因争夺资源而造成的一种互相等待的现象
+        - 多线程同步的时候, 如果同步代码嵌套, 使用相同锁, 就有可能出现死锁
+        - 同步代码块尽量不要嵌套使用
+        - 死锁的发生必须具备以下四个必要条件：
+        - 互斥条件：指线程对所分配到的资源进行排它性使用，即在一段时间内某资源只由一个线程占用。如果此时还有其它线程请求资源，则请求者只能等待，直至占有资源的线程用毕释放
+        - 请求和保持条件：指线程已经保持至少一个资源，但又提出了新的资源请求，而该资源已被其它线程占有，此时请求线程阻塞，但又对自己已获得的其它资源保持不放。
+        - 不剥夺条件：指线程已获得的资源，在未使用完之前，不能被剥夺，只能在使用完时由自己释放。
+        - 环路等待条件：指在发生死锁时，必然存在一个线程资源的环形链，即线程集合{P0，P1，P2，···，Pn}中的P0正在等待一个P1占用的资源；P1正在等待P2占用的资源，……，Pn正在等待已被P0占用的资源。
+        - 通过给共享资源编号，顺序使用共享资源，解决死锁
 201. 线程优先级
+        - yield()：当前线程让出CPU，让其它线程有机会运行
+        - setPrioirity(int)：设置线程的优先级，java中线程有1~10个优先级，数值越大优先级别越高
 202. 什么叫可重入锁
+        - ReentrantLock类实现了Lock，它拥有与synchronized 相同的并发性和内存语义，但是添加了类似锁投票、定时锁等候和可中断锁等候的一些特性。它还提供了在激烈争情况下更佳的性能。
+        - 同步  使用lock()和unlock()方法进行同步，unlock()操作放到finally中
+        - 通信 使用ReentrantLock类的newCondition()方法可以获取Condition对象  需要等待的时候使用Condition的await()方法, 唤醒的时候用signal()方法  不同的线程使用不同的Condition, 这样就能区分唤醒的时候找哪个线程了
 203. 读写锁
+        - ReentrantReadWriteLock
+        - "读-读"不互斥，提高效率
+        - "读-写"互斥
+        - "写-写"互斥
 204. 线程组
+        - Java中使用ThreadGroup来表示线程组，它可以对一批线程进行分类管理，Java允许程序直接对线程组进行控制
+        - 默认情况下，所有的线程都属于主线程组
 205. 线程池
+        - 程序启动一个新线程成本是比较高的，因为它涉及到要与操作系统进行交互。而使用线程池可以很好的提高性能，尤其是当程序中要创建大量生存期很短的线程时，更应该考虑使用线程池。线程池里的每一个线程代码结束后，并不会死亡，而是再次回到线程池中成为空闲状态，等待下一个对象来使用。从JDK5开始，Java内置支持线程池
+        - JDK5新增了一个Executors工厂类来产生线程池
+        - newCachedThreadPool创建一个可缓存线程池，如果线程池长度超过处理需要，可灵活回收空闲线程，若无可回收，则新建线程。
+        - newFixedThreadPool创建一个定长线程池，可控制线程最大并发数，超出的线程会在队列中等待。
+        - newScheduledThreadPool创建一个定长线程池，支持定时及周期性任务执行
+        - newSingleThreadExecutor创建一个单线程化的线程池，它只会用唯一的工作线程来执行任务，保证所有任务按照指定顺序(FIFO, LIFO, 优先级)执行。
+        - 使用步骤
+                - 创建线程池对象
+                - 创建Runnable/Callable实例
+                - 提交Runnable/Callable实例
+                - 关闭线程池
 206. 定时任务调度
+        - java.util.Timer
+        - java.util.concurrent.ScheduledExecutorService
+        - 使用开源类库Quartz、JCronTab
+        - Timer的优点在于简单易用，但由于所有任务都是由同一个线程来调度，因此所有任务都是串行执行的，同一时间只能有一个任务在执行，前一个任务的延迟或异常都将会影响到之后的任务。如果说某个任务出现了异常，这个定时器上的所有任务都会终止。
+        - ScheduledExecutor每一个被调度的任务都会由线程池中一个线程去执行，因此任务是并发执行的，相互之间不会受到干扰。
 207. volatile
+        - 修饰的变量是易失（不稳定）变量
+        - 线程可以把成员变量保存在线程工作内存（缓存）中，而不是直接在主存中进行读写。这就可能造成一个线程在主存中修改了一个变量的值，而另外一个线程还继续使用线程工作内存中的变量值的拷贝，造成数据的不一致。
+        - volatile修饰的成员变量在每次被线程访问时，都强迫从主内存中重读该成员变量的值。当成员变量发生变化时，强迫线程将变化值回写到主内存。
+        - 当我们把代码写好之后，虚拟机不一定会按照我们写的代码的顺序来执行。虚拟机在进行代码编译优化的时候，对于那些改变顺序之后不会对最终变量的值造成影响的代码，是有可能将他们进行指令重排序的。
+        - 如果一个变量被声明volatile的话，那么这个变量不会被进行指令重排序。
+        - 原子操作：即一个操作或者多个操作，要么全部执行并且执行的过程不会被任何因素打断，要么就都不执行。由于Java中的运算并非是原子操作，所以导致volatile声明的变量无法保证线程安全。
+        - volatile对于一写多读，是可以解决变量同步问题，但是如果多写，同样无法解决线程安全问题。
+        - volatile具有可见性、有序性，不具备原子性。
+        - 何时使用volatile？java中多线程共享的数据，并且不是放到synchronized代码块中进行操作，一写多读
+        - volatile不会让线程阻塞，响应速度比synchronized高
 208. IO
 209. FileInputStream、FileOutputStream
+        - read()一次读取一个字节，返回值是int，不是byte，只用低8位
+        - write(int)一次写出一个字节，虽然写的是int，但到文件中的是byte，会自动去除前24位
+        - FileOutputStream如果文件不存在，新建空文件；如果文件已经存在，清空其内容；如果想向文件追加内容，将构造器第二个参数传true
+        - FileInputStream.available()：返回可读字节数
+        - read(byte[])：一次读多个字节
+        - wrire(byte[])：一次写多个字节
+        - write(byte[] b, int off, int len)写出有效的字节个数
+        - Filter相关的流，是辅助流，需要依赖其它流，起到功能增强的作用
 210. BufferedInputStream、BufferedOutputStream
+        - BufferedInputStream会一次性从文件中读取8192个字节, 存在缓冲区中, 返回给程序一个；程序再次读取时, 就不用找文件了, 直接从缓冲区中获取，直到缓冲区中所有的都被使用过, 才重新从文件中读取8192个字节
+        - BufferedOutputStream也内置了一个缓冲区(数组).程序向流中写出字节时, 不会直接写到文件, 先写到缓冲区中，直到缓冲区写满, BufferedOutputStream才会把缓冲区中的数据一次性写到文件里
+        - flush()方法：用来刷新缓冲区的,刷新后可以再次写出
+        - close()方法：用来关闭流释放资源的,如果是带缓冲区的流对象的close()方法,不但会关闭流,还会在关闭流之前刷新缓冲区,关闭后不能再写出
 211. DataInputStream、DataOutputStream
+        - 可以直接对java中的基本数据类型进行读、写操作
 212. PipedInputStream、PipedOutputStream
+        - 可以在线程间进行数据的交换
 213. SequenceInputStream
+        - 可以把多个字节流整合成一个, 顺序读取或写入
 214. ByteArrayInputStream、ByteArrayOutputStream
+        - 在内存中创建数组，当作缓冲区，最后一次性从缓冲区中获取数据
 215. InputStreamReader、OutputStreamWriter
+        - 字符流是可以直接读写字符的IO流
+        - 按照指定的字符编码进行读写操作
 216. BufferedReader、BufferedWriter
+        - BufferedReader的read()方法读取字符时会一次读取若干字符到缓冲区, 然后逐个返回给程序, 降低读取文件的次数, 提高效率
+        - BufferedWriter的write()方法写出字符时会先写到缓冲区, 缓冲区写满时才会写到文件, 降低写文件的次数, 提高效率
 217. FileReader、FileWriter
+        - FileReader类的read()方法可以按照字符大小读取(使用系统默认字符编码)
+        - FileWriter类(使用系统默认字符编码)的write()方法可以自动把字符转为字节写出(使用系统默认字符编码)
 218. File
+        - public boolean createNewFile():创建文件 如果存在这样的文件，就不创建了
+        - public boolean mkdir():创建文件夹 如果存在这样的目录，就不创建了
+        - public boolean mkdirs():创建文件夹,如果父目录不存在，会帮你创建出来
+        - public boolean renameTo(File dest):把文件重命名为指定的文件路径
+        - public boolean delete():删除文件或者目录，不走回收站，目录下不能有子目录或文件
+        - public boolean isDirectory():判断是否是目录
+        - public boolean isFile():判断是否是文件
+        - public boolean exists():判断是否存在
+        - public boolean canRead():判断是否可读
+        - public boolean canWrite():判断是否可写
+        - public boolean isHidden():判断是否隐藏
+        - public String getAbsolutePath()：获取绝对路径
+        - public String getPath():获取路径
+        - public String getName():获取名称
+        - public long length():获取长度。字节数
+        - public long lastModified():获取最后一次的修改时间，毫秒值
+        - public String[] list():获取指定目录下的所有文件或者文件夹的名称数组
+        - public File[] listFiles():获取指定目录下的所有文件或者文件夹的File数组
 219. RandomAccessFile
 220. 对象持久化 ObjectInputStream、ObjectOutputStream
 221. 网络编程概念
 222. 基于TCP协议网络服务器端编程步骤
+        - 1）创建服务器端Socket，并绑定在某一端口上
+        - ServerSocket ss = new ServerSocket(port);
+        - 2）接收客户请求，返回客户端Socket
+        - Socket s = ss.accept();
+        - 3）获取客户端的输入、输出流
+        - s.getInputStream();
+        - s.getOutputStream();
+        - 4）封装输入、输出流
+        - 5）执行读、写操作
+        - 6）释放资源
+        - close();
 223. URL、URLConnection：获取远程站点的信息
 224. 基于UDP协议网络服务器端编程步骤
+        - 1）创建Socket，并指定服务器的IP和端口信息
+        - Socket s = new Socket(serverAddress,serverPort);
+        - 2）获取服务器端的输入、输出流
+        - s.getInputStream();
+        - s.getOutputStream();
+        - 3）封装输入、输出流
+        - 4）执行读、写操作
+        - 5）释放资源
+        - close();
 225. 协议
 226. IP
 227. TCP
+        - 传输控制协议，面向连接（三次握手）、可靠的数据传输；占用带宽，效率低；提供数据确认和重传的机制，保证数据一定能够到达数据接收端。
 228. UDP
+        -用户数据报协议，无连接、不可靠数据传输；占用带宽小，效率高；
+不需要建立连接，可以直接向一个IP地址发送数据，至于是不是能够收到不能保证，发送过程中数据有可能丢失、IP地址可能不存在、IP地址代表的主机没有运行等原因都可能导致不能接收到数据。
 229. HTTP
-
+230. 接口
+231. Lambda表达式
+232. 函数描述符
+233. 方法引用
+234. stream
 
 <style>
 *  {
