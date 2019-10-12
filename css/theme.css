@@ -1,3 +1,17 @@
+@font-face {
+    font-family: Fira;
+    src: url("../fonts/Firacode.ttf");
+}
+
+@font-face {
+    font-family: PingFang;
+    src: url("../fonts/PingFang.ttf");
+}
+
+body {
+    font-family: Fira, PingFang, Helvetica, Microsoft Yahei, sans-serif;
+}
+
 .zyj-content {
     /*增加背景网格*/
     background-image: linear-gradient(90deg, rgba(250, 255, 255, 0.05) 3%, rgba(250, 255, 255, 0) 3%), linear-gradient(360deg,rgba(250, 255, 255, 0.05) 3%, rgba(255, 255, 255, 0) 3%);
