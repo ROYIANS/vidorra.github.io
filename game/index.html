@@ -1,140 +1,187 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cmn-Hans">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <style>
-        td {
-            min-width: 20px;
-            min-height: 20px;
-        }
-    </style>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <link rel="icon" type="image/png" href="../img/logo.png" sizes="192x192">
+    <title>数字迷图</title>
+    <link rel="stylesheet" href="../css/mdui.min.css"/>
+    <link rel="stylesheet" href="../css/docs.css"/>
+    <link rel="stylesheet" href="../css/theme.css"/>
 </head>
-<body>
-<h1>数字迷图</h1>
-<h3 id="title"> Begin Your Game! </h3>
-<table border="1" id="box"></table>
-<script>
-    const SIZE = 6;
-    let pos = [];
-    let pans = [];
-    let rows = [];
-    let cols = [];
-    let i, j;
-    let box = document.getElementById("box");
-    for (i = 0; i < SIZE; i++) {
-        pos[i] = [];
-        pans[i] = [];
-        for (j = 0; j < SIZE; j++) {
-            pos[i][j] = Math.round(Math.random());
-            pans[i][j] = 0;
-        }
-    }
 
-    for (i = 0; i < SIZE; i++) {
-        let count = 0;
-        let counts = [];
-        for (j = 0; j < SIZE; j++) {
-            if (count !== 0 && pos[i][j] === 0) {
-                counts.push(count);
-                count = 0;
-            }
-            if (pos[i][j] === 1) {
-                count += 1;
-            }
-            if (pos[i][j] === 1 && j === SIZE - 1) {
-                counts.push(count);
-            }
-            if (counts.length === 0 && j === SIZE - 1) {
-                counts.push(0);
-            }
-        }
-        rows.push(counts);
-    }
-
-    for (j = 0; j < SIZE; j++) {
-        let count = 0;
-        let counts = [];
-        for (i = 0; i < SIZE; i++) {
-            if (count !== 0 && pos[i][j] === 0) {
-                counts.push(count);
-                count = 0;
-            }
-            if (pos[i][j] === 1) {
-                count += 1;
-            }
-            if (pos[i][j] === 1 && i === SIZE - 1) {
-                counts.push(count);
-            }
-            if (counts.length === 0 && i === SIZE - 1) {
-                counts.push(0);
-            }
-        }
-        cols.push(counts);
-    }
-
-    let tr = document.createElement("tr");
-    let td1 = document.createElement("td");
-    tr.append(td1);
-    for (i = 0; i < cols.length; i++) {
-        let td = document.createElement("td");
-        let html = "";
-        cols[i].map(item => {
-            html += item;
-            html += "<br />";
-        });
-        td.innerHTML = html;
-        tr.append(td);
-    }
-    box.append(tr);
-
-    for (i = 0; i < SIZE; i++) {
-        let tr = document.createElement("tr");
-        let td1 = document.createElement("td");
-        let html = "";
-        rows[i].map(item => {
-            html += item;
-            html += " ";
-        });
-        td1.innerHTML = html;
-        tr.append(td1);
-        for (j = 0; j < SIZE; j++) {
-            let td = document.createElement("td");
-            td.style.background = "#000000";
-            let posx = i;
-            let posy = j;
-            td.onclick = function () {
-                let str = posx + "-" + posy;
-                document.getElementById("title").innerText = "Game Start! You Just Pressed " + str + " is it RIGHT?";
-                let it = document.getElementById(str);
-                if (pans[posx][posy] === 0) {
-                    it.style.background = "#ffffff";
-                    pans[posx][posy] = 1;
-                } else {
-                    it.style.background = "#000000";
-                    pans[posx][posy] = 0;
+<body
+        class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-loaded mdui-theme-layout-dark mdui-theme-primary-teal mdui-theme-accent-teal">
+<header class="mdui-appbar mdui-appbar-fixed">
+    <div class="mdui-toolbar mdui-color-theme">
+            <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white"
+                  mdui-drawer="{target: '#main-drawer', swipe: true}"><i
+                    class="mdui-icon material-icons">menu</i></span>
+        <a href="#" class="mdui-typo-headline mdui-hidden-xs">小梦岛</a>
+        <div class="mdui-toolbar-spacer"></div>
+    </div>
+</header>
+<div class="mdui-drawer" id="main-drawer">
+    <div class="mdui-list" mdui-collapse="{accordion: true}" style="margin-bottom: 76px;">
+        <div class="mdui-collapse-item">
+            <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-blue">near_me</i>
+                <div class="mdui-list-item-content">
+                    关于我
+                </div>
+                <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+            </div>
+            <div class="mdui-collapse-item-body mdui-list">
+                <a href="../index.html" class="mdui-list-item mdui-ripple ">说明</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mdui-container doc-container doc-no-cover">
+    <div class="mdui-typo">
+        <h1>数字迷图</h1>
+        <h4 id="title"> 准备好就开始吧 </h4>
+        <div class="mdui-table-fluid">
+            <table class="mdui-table" id="box"></table>
+        </div>
+        <script>
+            const SIZE = 6;
+            let pos = [];
+            let pans = [];
+            let rows = [];
+            let cols = [];
+            let i, j;
+            let box = document.getElementById("box");
+            for (i = 0; i < SIZE; i++) {
+                pos[i] = [];
+                pans[i] = [];
+                for (j = 0; j < SIZE; j++) {
+                    pos[i][j] = Math.round(Math.random());
+                    pans[i][j] = 0;
                 }
-                check();
-            };
-            td.id = i + "-" + j;
-            tr.append(td);
-        }
-        box.append(tr);
-    }
+            }
 
-    function check() {
-        flag = true;
-        for (i = 0; i < SIZE; i++) {
+            for (i = 0; i < SIZE; i++) {
+                let count = 0;
+                let counts = [];
+                for (j = 0; j < SIZE; j++) {
+                    if (count !== 0 && pos[i][j] === 0) {
+                        counts.push(count);
+                        count = 0;
+                    }
+                    if (pos[i][j] === 1) {
+                        count += 1;
+                    }
+                    if (pos[i][j] === 1 && j === SIZE - 1) {
+                        counts.push(count);
+                    }
+                    if (counts.length === 0 && j === SIZE - 1) {
+                        counts.push(0);
+                    }
+                }
+                rows.push(counts);
+            }
+
             for (j = 0; j < SIZE; j++) {
-                if (pos[i][j] !== pans[i][j]) {
-                    flag = false;
+                let count = 0;
+                let counts = [];
+                for (i = 0; i < SIZE; i++) {
+                    if (count !== 0 && pos[i][j] === 0) {
+                        counts.push(count);
+                        count = 0;
+                    }
+                    if (pos[i][j] === 1) {
+                        count += 1;
+                    }
+                    if (pos[i][j] === 1 && i === SIZE - 1) {
+                        counts.push(count);
+                    }
+                    if (counts.length === 0 && i === SIZE - 1) {
+                        counts.push(0);
+                    }
+                }
+                cols.push(counts);
+            }
+
+            let tr = document.createElement("tr");
+            let td1 = document.createElement("td");
+            tr.append(td1);
+            for (i = 0; i < cols.length; i++) {
+                let td = document.createElement("td");
+                let html = "";
+                cols[i].map(item => {
+                    html += item;
+                    html += "<br />";
+                });
+                td.innerHTML = html;
+                tr.append(td);
+            }
+            box.append(tr);
+
+            for (i = 0; i < SIZE; i++) {
+                let tr = document.createElement("tr");
+                let td1 = document.createElement("td");
+                let html = "";
+                rows[i].map(item => {
+                    html += item;
+                    html += " ";
+                });
+                td1.innerHTML = html;
+                tr.append(td1);
+                for (j = 0; j < SIZE; j++) {
+                    let td = document.createElement("td");
+                    let posx = i;
+                    let posy = j;
+                    td.id = i + "-" + j;
+                    let label = document.createElement("label");
+                    label.classList.add("mdui-checkbox");
+                    let input = document.createElement("input");
+                    input.type = "checkbox";
+                    input.onclick = function () {
+                        let str = posx + "-" + posy;
+                        document.getElementById("title").innerText = "游戏开始了！\n你刚刚按了 " + str + "，\n不知道对不对?";
+                        if (pans[posx][posy] === 0) {
+                            pans[posx][posy] = 1;
+                        } else {
+                            pans[posx][posy] = 0;
+                        }
+                        check();
+                    };
+                    let icon = document.createElement("i");
+                    icon.classList.add("mdui-checkbox-icon");
+                    label.append(input);
+                    label.append(icon);
+                    td.append(label);
+                    tr.append(td);
+                }
+                box.append(tr);
+            }
+
+            function check() {
+                flag = true;
+                for (i = 0; i < SIZE; i++) {
+                    for (j = 0; j < SIZE; j++) {
+                        if (pos[i][j] !== pans[i][j]) {
+                            flag = false;
+                        }
+                    }
+                }
+                if (flag) {
+                    mdui.snackbar({
+                        message: '你赢了'
+                    });
                 }
             }
-        }
-        if (flag) {
-            document.getElementById("title").innerText = "YOU WIN!"
-        }
-    }
-</script>
+        </script>
+    </div>
+</div>
+<script src="../js/jquery-3.1.1.min.js"></script>
+<script src="../js/smooth-scroll.min.js"></script>
+<script src="../js/mdui.min.js?v=0.4.3"></script>
 </body>
+
 </html>
