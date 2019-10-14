@@ -48,7 +48,7 @@
             <a href="#" onclick="hint();">提示</a>
             <small id="time">计时5分钟</small>
         </h1>
-        <div style="font-size: 5px;" id="hint">嘻嘻嘻，游戏不会太难吧</div>
+        <div style="font-size: 10px;" id="hint">嘻嘻嘻，游戏不会太难吧</div>
         <h4 id="title">准备好了么？</h4>
         <div id="box">
             <p>选择矩阵的SIZE：</p>
@@ -142,8 +142,6 @@
                 for (i = 0; i < SIZE; i++) {
                     let row2 = document.createElement("div");
                     row2.classList.add("mdui-row");
-                    let item2 = document.createElement("div");
-                    item2.classList.add("mdui-col-xs-1");
                     for (j = 0; j < SIZE; j++) {
                         let div3 = document.createElement("div");
                         div3.classList.add("mdui-col-xs-1");
@@ -170,6 +168,8 @@
                         div3.append(label);
                         row2.append(div3);
                     }
+                    let item2 = document.createElement("div");
+                    item2.classList.add("mdui-col-xs-3");
                     let html = "";
                     rows[i].map(item => {
                         html += item;
