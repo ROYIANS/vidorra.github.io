@@ -45,7 +45,7 @@
     <div class="mdui-typo">
         <h1>
             <span>数字谜图</span>
-            <small id="time">计时5分钟</small>
+            <small id="time">计时3分钟</small>
         </h1>
         <div style="font-size: 15px;">
             <a href="#" onclick="hint();">提示</a>
@@ -234,7 +234,7 @@ TimeDown.js
                 //秒
                 var seconds = modulo % 60;
                 //输出到页面
-                if(minutes<1) {
+                if (minutes < 1) {
                     document.getElementById(id).classList.add("mdui-text-color-pink");
                 }
                 document.getElementById(id).innerHTML = "还剩:" + minutes + "分钟" + seconds + "秒";
@@ -247,18 +247,24 @@ TimeDown.js
             }
 
             function checkTime(minutes, seconds, SIZE) {
-                if (minutes === 0 && seconds === 0) {
+                if (minutes === 0 && seconds === 1) {
                     let it = document.getElementById("title");
                     mdui.snackbar({
                         message: '你超时了'
                     });
                     clearTimeout(t);
-                    for(i=0;i<SIZE;i++) {
-                        for(j=0;j<SIZE;j++) {
-                            let id = i+"-"+j;
+                    for (i = 0; i < SIZE; i++) {
+                        for (j = 0; j < SIZE; j++) {
+                            let id = i + "-" + j;
                             document.getElementById(id).disabled = true;
-                            if(pos[i][j]===1) {
+                            if (pos[i][j] === 1) {
                                 document.getElementById(id).checked = true;
+                            }
+                            if (pans[i][j] === 1 && pos[i][j] === 1) {
+                                document.getElementById(id).parentElement.style.background = "green";
+                            }
+                            if (pans[i][j] === 1 && pos[i][j] === 0) {
+                                document.getElementById(id).parentElement.style.background = "red";
                             }
                         }
                     }
@@ -267,8 +273,8 @@ TimeDown.js
             }
 
             function start(SIZE) {
-                if (document.getElementById("time").innerText === "计时5分钟") {
-                    TimeDown("time", 300, SIZE);
+                if (document.getElementById("time").innerText === "计时3分钟") {
+                    TimeDown("time", 181, SIZE);
                 }
             }
         </script>
