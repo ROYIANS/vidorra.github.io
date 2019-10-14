@@ -222,35 +222,32 @@
 时间倒计时插件
 TimeDown.js
 */
-            function TimeDown(id, endDateStr, SIZE) {
-                //结束时间
-                var endDate = new Date(endDateStr);
-                //当前时间
-                var nowDate = new Date();
+            function TimeDown(id, time, SIZE) {
                 //相差的总秒数
-                var totalSeconds = parseInt((endDate - nowDate) / 1000);
-                //天数
-                var days = Math.floor(totalSeconds / (60 * 60 * 24));
+                var totalSeconds = parseInt(time);
+
+                totalSeconds -= 1;
                 //取模（余数）
-                var modulo = totalSeconds % (60 * 60 * 24);
-                //小时数
-                var hours = Math.floor(modulo / (60 * 60));
-                modulo = modulo % (60 * 60);
+                var modulo = totalSeconds % (60 * 60 * 24) % (60 * 60);
                 //分钟
                 var minutes = Math.floor(modulo / 60);
                 //秒
                 var seconds = modulo % 60;
                 //输出到页面
+                if(minutes<1) {
+                    document.getElementById(id).classList.add("mdui-text-color-pink");
+                }
                 document.getElementById(id).innerHTML = "还剩:" + minutes + "分钟" + seconds + "秒";
+
                 //延迟一秒执行自己
                 t = setTimeout(function () {
-                    TimeDown(id, endDateStr, SIZE);
-                    checkTime(days, hours, minutes, seconds, SIZE);
+                    TimeDown(id, totalSeconds, SIZE);
+                    checkTime(minutes, seconds, SIZE);
                 }, 1000);
             }
 
-            function checkTime(days, hours, minutes, seconds, SIZE) {
-                if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
+            function checkTime(minutes, seconds, SIZE) {
+                if (minutes === 0 && seconds === 0) {
                     let it = document.getElementById("title");
                     mdui.snackbar({
                         message: '你超时了'
@@ -271,17 +268,7 @@ TimeDown.js
 
             function start(SIZE) {
                 if (document.getElementById("time").innerText === "计时5分钟") {
-                    var date = new Date();
-
-                    var year = date.getFullYear();
-                    var month = date.getMonth() + 1;
-                    var day = date.getDate();
-
-                    var hour = date.getHours();
-                    var minute = date.getMinutes() + 5;
-                    var second = date.getSeconds();
-                    var endDateStr = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
-                    TimeDown("time", endDateStr, SIZE);
+                    TimeDown("time", 300, SIZE);
                 }
             }
         </script>
