@@ -43,137 +43,243 @@
 </div>
 <div class="mdui-container doc-container doc-no-cover">
     <div class="mdui-typo">
-        <h1>数字迷图</h1>
-        <h4 id="title"> 准备好就开始吧 </h4>
-        <div class="mdui-table-fluid">
-            <table class="mdui-table" id="box"></table>
+        <h1>
+            <span>数字谜图</span>
+            <a href="#" onclick="hint();">提示</a>
+            <small id="time">计时5分钟</small>
+        </h1>
+        <div style="font-size: 5px;" id="hint">嘻嘻嘻，游戏不会太难吧</div>
+        <h4 id="title">准备好了么？</h4>
+        <div id="box">
+            <p>选择矩阵的SIZE：</p>
+            <label class="mdui-slider mdui-slider-discrete">
+                <input id="size" type="range" step="1" min="4" max="8"/>
+            </label>
+            <button onclick="let size = document.getElementById('size').value; create(size);start(size);"
+                    class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-theme-accent mdui-ripple">开始游戏
+            </button>
+
         </div>
         <script>
-            const SIZE = 6;
-            let pos = [];
-            let pans = [];
-            let rows = [];
-            let cols = [];
-            let i, j;
-            let box = document.getElementById("box");
-            for (i = 0; i < SIZE; i++) {
-                pos[i] = [];
-                pans[i] = [];
-                for (j = 0; j < SIZE; j++) {
-                    pos[i][j] = Math.round(Math.random());
-                    pans[i][j] = 0;
-                }
-            }
+            var tip = "为什么不先试一下";
+            var wrong = "null";
+            var pos = [];
+            var pans = [];
+            var rows = [];
+            var cols = [];
+            var i, j, t;
 
-            for (i = 0; i < SIZE; i++) {
-                let count = 0;
-                let counts = [];
-                for (j = 0; j < SIZE; j++) {
-                    if (count !== 0 && pos[i][j] === 0) {
-                        counts.push(count);
-                        count = 0;
-                    }
-                    if (pos[i][j] === 1) {
-                        count += 1;
-                    }
-                    if (pos[i][j] === 1 && j === SIZE - 1) {
-                        counts.push(count);
-                    }
-                    if (counts.length === 0 && j === SIZE - 1) {
-                        counts.push(0);
-                    }
-                }
-                rows.push(counts);
-            }
-
-            for (j = 0; j < SIZE; j++) {
-                let count = 0;
-                let counts = [];
+            function create(size) {
+                document.getElementById("box").innerHTML = "";
+                const SIZE = size;
+                let box = document.getElementById("box");
                 for (i = 0; i < SIZE; i++) {
-                    if (count !== 0 && pos[i][j] === 0) {
-                        counts.push(count);
-                        count = 0;
-                    }
-                    if (pos[i][j] === 1) {
-                        count += 1;
-                    }
-                    if (pos[i][j] === 1 && i === SIZE - 1) {
-                        counts.push(count);
-                    }
-                    if (counts.length === 0 && i === SIZE - 1) {
-                        counts.push(0);
+                    pos[i] = [];
+                    pans[i] = [];
+                    for (j = 0; j < SIZE; j++) {
+                        pos[i][j] = Math.round(Math.random());
+                        pans[i][j] = 0;
                     }
                 }
-                cols.push(counts);
-            }
 
-            let tr = document.createElement("tr");
-            let td1 = document.createElement("td");
-            tr.append(td1);
-            for (i = 0; i < cols.length; i++) {
-                let td = document.createElement("td");
-                let html = "";
-                cols[i].map(item => {
-                    html += item;
-                    html += "<br />";
-                });
-                td.innerHTML = html;
-                tr.append(td);
-            }
-            box.append(tr);
-
-            for (i = 0; i < SIZE; i++) {
-                let tr = document.createElement("tr");
-                let td1 = document.createElement("td");
-                let html = "";
-                rows[i].map(item => {
-                    html += item;
-                    html += " ";
-                });
-                td1.innerHTML = html;
-                tr.append(td1);
-                for (j = 0; j < SIZE; j++) {
-                    let td = document.createElement("td");
-                    let posx = i;
-                    let posy = j;
-                    td.id = i + "-" + j;
-                    let label = document.createElement("label");
-                    label.classList.add("mdui-checkbox");
-                    let input = document.createElement("input");
-                    input.type = "checkbox";
-                    input.onclick = function () {
-                        let str = posx + "-" + posy;
-                        document.getElementById("title").innerText = "游戏开始了！\n你刚刚按了 " + str + "，\n不知道对不对?";
-                        if (pans[posx][posy] === 0) {
-                            pans[posx][posy] = 1;
-                        } else {
-                            pans[posx][posy] = 0;
+                for (i = 0; i < SIZE; i++) {
+                    let count = 0;
+                    let counts = [];
+                    for (j = 0; j < SIZE; j++) {
+                        if (count !== 0 && pos[i][j] === 0) {
+                            counts.push(count);
+                            count = 0;
                         }
-                        check();
-                    };
-                    let icon = document.createElement("i");
-                    icon.classList.add("mdui-checkbox-icon");
-                    label.append(input);
-                    label.append(icon);
-                    td.append(label);
-                    tr.append(td);
+                        if (pos[i][j] === 1) {
+                            count += 1;
+                        }
+                        if (pos[i][j] === 1 && j === SIZE - 1) {
+                            counts.push(count);
+                        }
+                        if (counts.length === 0 && j === SIZE - 1) {
+                            counts.push(0);
+                        }
+                    }
+                    rows.push(counts);
                 }
-                box.append(tr);
+
+                for (j = 0; j < SIZE; j++) {
+                    let count = 0;
+                    let counts = [];
+                    for (i = 0; i < SIZE; i++) {
+                        if (count !== 0 && pos[i][j] === 0) {
+                            counts.push(count);
+                            count = 0;
+                        }
+                        if (pos[i][j] === 1) {
+                            count += 1;
+                        }
+                        if (pos[i][j] === 1 && i === SIZE - 1) {
+                            counts.push(count);
+                        }
+                        if (counts.length === 0 && i === SIZE - 1) {
+                            counts.push(0);
+                        }
+                    }
+                    cols.push(counts);
+                }
+
+                let div_row = document.createElement("div");
+                div_row.classList.add("mdui-row");
+                for (i = 0; i < cols.length; i++) {
+                    let item = document.createElement("div");
+                    item.classList.add("mdui-col-xs-1");
+                    let html = "";
+                    cols[i].map(item => {
+                        html += item;
+                        html += "<br />";
+                    });
+                    item.innerHTML = html;
+                    div_row.append(item);
+                }
+                box.append(div_row);
+
+                for (i = 0; i < SIZE; i++) {
+                    let row2 = document.createElement("div");
+                    row2.classList.add("mdui-row");
+                    let item2 = document.createElement("div");
+                    item2.classList.add("mdui-col-xs-1");
+                    for (j = 0; j < SIZE; j++) {
+                        let div3 = document.createElement("div");
+                        div3.classList.add("mdui-col-xs-1");
+                        let posx = i;
+                        let posy = j;
+                        let label = document.createElement("label");
+                        label.classList.add("mdui-checkbox");
+                        let input = document.createElement("input");
+                        input.type = "checkbox";
+                        input.id = i + "-" + j;
+                        input.onclick = function () {
+                            document.getElementById("title").innerText = "游戏开始了！";
+                            if (pans[posx][posy] === 0) {
+                                pans[posx][posy] = 1;
+                            } else {
+                                pans[posx][posy] = 0;
+                            }
+                            check(SIZE);
+                        };
+                        let icon = document.createElement("i");
+                        icon.classList.add("mdui-checkbox-icon");
+                        label.append(input);
+                        label.append(icon);
+                        div3.append(label);
+                        row2.append(div3);
+                    }
+                    let html = "";
+                    rows[i].map(item => {
+                        html += item;
+                        html += " ";
+                    });
+                    item2.innerHTML = html;
+                    row2.append(item2);
+                    box.append(row2);
+                }
             }
 
-            function check() {
+            function check(size) {
+                const SIZE = size;
                 flag = true;
+                wrong = "null";
                 for (i = 0; i < SIZE; i++) {
                     for (j = 0; j < SIZE; j++) {
                         if (pos[i][j] !== pans[i][j]) {
                             flag = false;
                         }
+                        if (pos[i][j] === 1 && pans[i][j] === 0) {
+                            tip = "第" + (i + 1) + "行第" + (j + 1) + "个 是一个你没有发现的点。"
+                        }
+                        if (pos[i][j] === 0 && pans[i][j] === 1) {
+                            wrong = "第" + (i + 1) + "行第" + (j + 1) + "个 你可能点错了"
+                        }
                     }
                 }
                 if (flag) {
+                    let it = document.getElementById("title");
                     mdui.snackbar({
                         message: '你赢了'
                     });
+                    clearTimeout(t);
+                    it.innerHTML = "<span>你赢了！</span><button onclick='location.reload()' class='mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-theme-accent mdui-ripple'>再玩一局</button>";
+                }
+            }
+
+            function hint() {
+                if (wrong === "null") {
+                    document.getElementById("hint").innerText = tip;
+                } else {
+                    document.getElementById("hint").innerText = wrong;
+                }
+            }
+
+            /*
+时间倒计时插件
+TimeDown.js
+*/
+            function TimeDown(id, endDateStr, SIZE) {
+                //结束时间
+                var endDate = new Date(endDateStr);
+                //当前时间
+                var nowDate = new Date();
+                //相差的总秒数
+                var totalSeconds = parseInt((endDate - nowDate) / 1000);
+                //天数
+                var days = Math.floor(totalSeconds / (60 * 60 * 24));
+                //取模（余数）
+                var modulo = totalSeconds % (60 * 60 * 24);
+                //小时数
+                var hours = Math.floor(modulo / (60 * 60));
+                modulo = modulo % (60 * 60);
+                //分钟
+                var minutes = Math.floor(modulo / 60);
+                //秒
+                var seconds = modulo % 60;
+                //输出到页面
+                document.getElementById(id).innerHTML = "还剩:" + minutes + "分钟" + seconds + "秒";
+                //延迟一秒执行自己
+                t = setTimeout(function () {
+                    TimeDown(id, endDateStr, SIZE);
+                    checkTime(days, hours, minutes, seconds, SIZE);
+                }, 1000);
+            }
+
+            function checkTime(days, hours, minutes, seconds, SIZE) {
+                if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
+                    let it = document.getElementById("title");
+                    mdui.snackbar({
+                        message: '你超时了'
+                    });
+                    clearTimeout(t);
+                    for(i=0;i<SIZE;i++) {
+                        for(j=0;j<SIZE;j++) {
+                            let id = i+"-"+j;
+                            document.getElementById(id).disabled = true;
+                            if(pos[i][j]===1) {
+                                document.getElementById(id).checked = true;
+                            }
+                        }
+                    }
+                    it.innerHTML = "<span>时间到，你输了！</span><button onclick='location.reload()' class='mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-theme-accent mdui-ripple'>再玩一局</button>";
+                }
+            }
+
+            function start(SIZE) {
+                if (document.getElementById("time").innerText === "计时5分钟") {
+                    var date = new Date();
+
+                    var year = date.getFullYear();
+                    var month = date.getMonth() + 1;
+                    var day = date.getDate();
+
+                    var hour = date.getHours();
+                    var minute = date.getMinutes() + 5;
+                    var second = date.getSeconds();
+                    var endDateStr = year + "-" + month + "-" + day + " " + hour + ":" + minute + ":" + second;
+                    TimeDown("time", endDateStr, SIZE);
                 }
             }
         </script>
