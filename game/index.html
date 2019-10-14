@@ -164,6 +164,7 @@
                             check(SIZE);
                         };
                         let icon = document.createElement("i");
+                        icon.id = i + "-" + j+ "-icon";
                         icon.classList.add("mdui-checkbox-icon");
                         label.append(input);
                         label.append(icon);
@@ -256,15 +257,16 @@ TimeDown.js
                     for (i = 0; i < SIZE; i++) {
                         for (j = 0; j < SIZE; j++) {
                             let id = i + "-" + j;
+                            let iconid = id + "-icon";
                             document.getElementById(id).disabled = true;
                             if (pos[i][j] === 1) {
                                 document.getElementById(id).checked = true;
                             }
                             if (pans[i][j] === 1 && pos[i][j] === 1) {
-                                document.getElementById(id).parentElement.style.background = "green";
+                                document.getElementById(iconid).style.background = "green";
                             }
                             if (pans[i][j] === 1 && pos[i][j] === 0) {
-                                document.getElementById(id).parentElement.style.background = "red";
+                                document.getElementById(iconid).style.background = "red";
                             }
                         }
                     }
