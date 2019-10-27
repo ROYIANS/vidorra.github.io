@@ -15,8 +15,8 @@
 </head>
 
 <body
-        class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-loaded mdui-theme-layout-dark mdui-theme-primary-teal mdui-theme-accent-teal">
-<header class="mdui-appbar mdui-appbar-fixed">
+        class="mdui-bottom-nav-fixed mdui-appbar-with-toolbar mdui-loaded mdui-theme-layout-dark mdui-theme-primary-teal mdui-theme-accent-teal">
+<header class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide">
     <div class="mdui-toolbar mdui-color-theme">
             <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white"
                   mdui-drawer="{target: '#main-drawer', swipe: true}"><i
@@ -25,7 +25,7 @@
         <div class="mdui-toolbar-spacer"></div>
     </div>
 </header>
-<div class="mdui-drawer" id="main-drawer">
+<div class="mdui-drawer mdui-drawer-close" id="main-drawer">
     <div class="mdui-list" mdui-collapse="{accordion: true}" style="margin-bottom: 76px;">
         <div class="mdui-collapse-item">
             <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
@@ -111,6 +111,24 @@
             </a>
         </div>
     </div>
+</div>
+<div class="mdui-bottom-nav mdui-bottom-nav-text-auto  mdui-bottom-nav-scroll-hide">
+    <a href="javascript:location.href='../index.html';" class="mdui-ripple">
+        <i class="mdui-icon material-icons">home</i>
+        <label>主页</label>
+    </a>
+    <a href="javascript:location.href='../homework/index.html';" class="mdui-ripple">
+        <i class="mdui-icon material-icons">book</i>
+        <label>作业</label>
+    </a>
+    <a href="javascript:location.href='../note/index.html';" class="mdui-ripple">
+        <i class="mdui-icon material-icons">picture_as_pdf</i>
+        <label>笔记</label>
+    </a>
+    <a href="javascript:location.href='../sourceFileList.html';" class="mdui-ripple">
+        <i class="mdui-icon material-icons">settings_ethernet</i>
+        <label>源文件</label>
+    </a>
 </div>
 <script>
     const DATE_PREV = "2019.09.17";

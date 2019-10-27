@@ -76,3 +76,10 @@ pre, img {
 .mdui-card {
     margin-bottom: 15px;
 }
+
+.mdui-bottom-nav {
+    color: #fff!important;
+    background-color: #212121!important;
+    padding: 10px 0 10px 0;
+    box-shadow: 0 -2px 4px -1px rgba(0,0,0,.2), 0 -4px 5px 0 rgba(0,0,0,.14), 0 -1px 10px 0 rgba(0,0,0,.12);
+}

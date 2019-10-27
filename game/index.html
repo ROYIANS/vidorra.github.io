@@ -15,8 +15,8 @@
 </head>
 
 <body
-        class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-loaded mdui-theme-layout-dark mdui-theme-primary-teal mdui-theme-accent-teal">
-<header class="mdui-appbar mdui-appbar-fixed">
+        class="mdui-bottom-nav-fixed mdui-appbar-with-toolbar mdui-loaded mdui-theme-layout-dark mdui-theme-primary-teal mdui-theme-accent-teal">
+<header class="mdui-appbar mdui-appbar-fixed mdui-appbar-scroll-hide">
     <div class="mdui-toolbar mdui-color-theme">
             <span class="mdui-btn mdui-btn-icon mdui-ripple mdui-ripple-white"
                   mdui-drawer="{target: '#main-drawer', swipe: true}"><i
@@ -25,7 +25,7 @@
         <div class="mdui-toolbar-spacer"></div>
     </div>
 </header>
-<div class="mdui-drawer" id="main-drawer">
+<div class="mdui-drawer mdui-drawer-close" id="main-drawer">
     <div class="mdui-list" mdui-collapse="{accordion: true}" style="margin-bottom: 76px;">
         <div class="mdui-collapse-item">
             <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
@@ -61,7 +61,7 @@
                     class="mdui-btn mdui-btn-raised mdui-btn-dense mdui-color-theme-accent mdui-ripple">开始游戏
             </button>
 
-        </div>
+        </div><br>
         <script>
             var tip = "为什么不先试一下";
             var wrong = "null";
@@ -281,7 +281,7 @@ TimeDown.js
             }
         </script>
     </div>
-</div>
+</div><br>
 <script src="../js/jquery-3.1.1.min.js"></script>
 <script src="../js/smooth-scroll.min.js"></script>
 <script src="../js/mdui.min.js?v=0.4.3"></script>
