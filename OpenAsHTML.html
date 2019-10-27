@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ROYIANS</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body onload="main()">
+<div id="content">
+
+
+</div>
+<script src="js/jquery-3.1.1.min.js"></script>
+<script>
+    function getQueryString(name) {
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)', 'i');
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return unescape(r[2]);
+        }
+        return null;
+    }
+
+    function escape2Html(str) {
+        var arrEntities = {'lt': '<', 'gt': '>', 'nbsp': ' ', 'amp': '&', 'quot': '"'};
+        return str.replace(/&(lt|gt|nbsp|amp|quot);/ig, function (all, t) {
+            return arrEntities[t];
+        });
+    }
+
+    function main() {
+        var iframe = document.createElement("iframe");
+        filename = getQueryString("filename");
+        if(getQueryString("filename")===null) {
+            location.href = "404.html";
+        }
+        iframe.src = filename;
+
+        if (iframe.attachEvent){
+            iframe.attachEvent("onload", function(){
+                alert(iframe.contentDocument.body.innerHTML);
+                document.getElementById("content").innerHTML = escape2Html(iframe.contentDocument.body.innerHTML);
+            });
+        } else {
+            iframe.onload = function(){
+                console.log(iframe.contentDocument);
+                document.getElementById("content").innerHTML = escape2Html(iframe.contentDocument.body.innerHTML);
+            };
+        }
+        iframe.id = "iframe";
+        iframe.width = "100%";
+        document.getElementById("content").appendChild(iframe);
+    }
+
+    $(document).ready(function(){
+        //高度设置
+        var height = $(window).height();
+        $('#iframe').height(height);
+    });
+    function changeFrameHeight(){
+        var ifm= document.getElementById("iframe");
+        $('#iframe').height($(window).height());
+    }
+    window.onresize=function(){
+        changeFrameHeight();
+    }
+</script>
+</body>
+</html>
